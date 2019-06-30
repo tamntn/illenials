@@ -7,8 +7,16 @@
     justify-content: center;
 }
 
+.phoenix-loader-wrapper iframe {
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    user-select: none;
+}
+
 @media screen and (max-width: 767px) {
-    .phoenix-loader-wrapper img {
-        height: 128px;
+    .phoenix-loader-wrapper iframe {
+        width: 240px;
+        height: 240px;
     }
 }

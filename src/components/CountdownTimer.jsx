@@ -11,7 +11,8 @@ class CountDown extends Component {
             days: undefined,
             hours: undefined,
             minutes: undefined,
-            seconds: undefined
+            seconds: undefined,
+            loading: true
         }
     }
 
@@ -27,6 +28,10 @@ class CountDown extends Component {
 
             this.setState({ days, hours, minutes, seconds });
         }, 1000);
+
+        setTimeout(() => {
+            this.setState({ loading: false })
+        }, 2500)
     }
 
     componentWillUnmount() {
@@ -44,9 +49,9 @@ class CountDown extends Component {
     }
 
     render() {
-        const { days, hours, minutes, seconds } = this.state;
+        const { days, hours, minutes, seconds, loading } = this.state;
 
-        if (!days) {
+        if (loading) {
             return <PhoenixLoader />;
         }
 
