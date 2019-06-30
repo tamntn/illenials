@@ -6,3 +6,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 767px) {
+    .phoenix-loader-wrapper img {
+        height: 128px;
+    }
+}
