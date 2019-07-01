@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import posed from 'react-pose';
+import ReactGA from 'react-ga';
 import PhoenixLoader from './PhoenixLoader';
 import '../style/countdown-page.css';
 import albumArtwork from '../images/album-artwork-square.jpg';
+
+ReactGA.initialize('UA-143098154-1');
+ReactGA.pageview('/');
 
 const AlbumArtwork = posed.div({
     visible: {
@@ -85,7 +89,7 @@ class CountdownPage extends Component {
         return (
             <div className="countdown-page-wrapper">
                 <AlbumArtwork className="countdown-page-left" initialPose="hidden" pose="visible">
-                    <img src={albumArtwork} />
+                    <img src={albumArtwork} alt="album-artwork"/>
                 </AlbumArtwork>
                 <div className="countdown-page-right">
                     <CountdownBox className="countdown-box" initialPose="hidden" pose="visible">
