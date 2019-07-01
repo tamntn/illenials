@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: row;
   color: #f6e3b2;
+  overflow: hidden;
 }
 
 .countdown-page-left {
@@ -20,6 +21,7 @@
   height: 100%;
   position: relative;
   left: calc((50vw - 100vh)/2);
+  user-select: none;
 }
 
 .countdown-page-right {
@@ -33,7 +35,7 @@
 
 .countdown-box {
   border: 1px solid #f6e3b2;
-  padding: 16px 24px;
+  padding: 12px 16px;
   border-radius: 8px;
   width: 80%;
   display: flex;
@@ -49,13 +51,14 @@
 }
 
 .countdown-number {
-  font-size: 64px;
+  font-size: 68px;
 }
 
 .countdown-text {
   font-size: 12px;
   font-weight: 300;
-  padding: 4px 0px 8px 0px;
+  padding: 0px 0px 12px 0px;
+  /* letter-spacing: 0.1rem; */
 }
 
 @keyframes App-logo-spin {
@@ -102,7 +105,7 @@
     font-size: 48px;
   }
   .countdown-text {
-    font-size: 8px;
+    font-size: 10px;
     padding: 0px;
   }
 }

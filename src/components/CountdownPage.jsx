@@ -1,8 +1,35 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import posed from 'react-pose';
 import PhoenixLoader from './PhoenixLoader';
 import '../style/countdown-page.css';
 import albumArtwork from '../images/album-artwork-square.jpg';
+
+const AlbumArtwork = posed.div({
+    visible: {
+        opacity: 1,
+        transition: { duration: 1500 },
+        scale: 1.0
+    },
+    hidden: {
+        opacity: 0,
+        transition: { duration: 1500 },
+        scale: 1.05
+    }
+})
+
+const CountdownBox = posed.div({
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 1500 },
+    },
+    hidden: {
+        y: 25,
+        opacity: 0,
+        transition: { duration: 1500 }
+    }
+})
 
 class CountdownPage extends Component {
     constructor(props) {
@@ -57,11 +84,11 @@ class CountdownPage extends Component {
 
         return (
             <div className="countdown-page-wrapper">
-                <div className="countdown-page-left">
+                <AlbumArtwork className="countdown-page-left" initialPose="hidden" pose="visible">
                     <img src={albumArtwork} />
-                </div>
+                </AlbumArtwork>
                 <div className="countdown-page-right">
-                    <div className="countdown-box">
+                    <CountdownBox className="countdown-box" initialPose="hidden" pose="visible">
                         <div className="countdown-unit">
                             <div className="countdown-number">{days}</div>
                             <div className="countdown-text">DAYS</div>
@@ -78,7 +105,7 @@ class CountdownPage extends Component {
                             <div className="countdown-number">{seconds}</div>
                             <div className="countdown-text">SECONDS</div>
                         </div>
-                    </div>
+                    </CountdownBox>
                 </div>
             </div>
         )
