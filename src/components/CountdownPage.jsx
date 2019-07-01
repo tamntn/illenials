@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import PhoenixLoader from './PhoenixLoader';
 import '../style/countdown-page.css';
+import albumArtwork from '../images/album-artwork-square.jpg';
 
 class CountdownPage extends Component {
     constructor(props) {
@@ -57,6 +58,7 @@ class CountdownPage extends Component {
         return (
             <div className="countdown-page-wrapper">
                 <div className="countdown-page-left">
+                    <img src={albumArtwork} />
                 </div>
                 <div className="countdown-page-right">
                     <div className="countdown-box">

@@ -1,4 +1,4 @@
-.countdown-page-wrapper{
+.countdown-page-wrapper {
   background-color: #050102;
   height: 100vh;
   display: flex;
@@ -9,10 +9,17 @@
 .countdown-page-left {
   height: 100vh;
   width: 50vw;
-  background-image: url('../images/album-artwork-square.jpg');
+  overflow: hidden; /* Hide image overflow */
+  /* background-image: url('../images/album-artwork-square.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+}
+
+.countdown-page-left img {
+  height: 100%;
+  position: relative;
+  left: calc((50vw - 100vh)/2);
 }
 
 .countdown-page-right {
@@ -60,39 +67,40 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .countdown-page-wrapper {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-
   .countdown-page-left {
     width: 100vw;
     height: 90vh;
     order: 2;
   }
-
+  .countdown-page-left img {
+    left: calc((100vw - 90vh)/2);
+  }
   .countdown-page-right {
     width: 100vw;
     height: 10vh;
     order: 1;
     z-index: 1;
   }
-
   .countdown-box {
     border: 0px;
     width: 100%;
     padding: 8% 0px 0px 0px;
-    /* padding: 0px; */
   }
-
   .countdown-unit {
     width: 21%;
   }
+}
 
+@media screen and (max-width: 768px) {
   .countdown-number {
     font-size: 48px;
   }
-
   .countdown-text {
     font-size: 8px;
     padding: 0px;
