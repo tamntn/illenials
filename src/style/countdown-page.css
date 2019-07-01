@@ -62,30 +62,27 @@
 
 @media screen and (max-width: 767px) {
   .countdown-page-wrapper {
-    display: inherit;
+    flex-direction: column;
   }
 
   .countdown-page-left {
     width: 100vw;
     height: 90vh;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    order: 2;
   }
 
   .countdown-page-right {
     width: 100vw;
-    height: 14vh;
-    position: fixed;
-    top: 0;
-    left: 0;
+    height: 10vh;
+    order: 1;
+    z-index: 1;
   }
 
   .countdown-box {
     border: 0px;
     width: 100%;
-    /* padding: 5% 0px 0px 0px; */
-    padding: 0px;
+    padding: 8% 0px 0px 0px;
+    /* padding: 0px; */
   }
 
   .countdown-unit {
