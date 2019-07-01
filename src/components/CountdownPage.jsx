@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import albumArtwork from '../images/album-artwork-min.jpg';
 import PhoenixLoader from './PhoenixLoader';
-import '../App.css';
+import '../style/countdown-page.css';
 
-class CountDown extends Component {
+class CountdownPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -56,31 +55,32 @@ class CountDown extends Component {
         }
 
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={albumArtwork} className="countdown-picture" alt="logo" />
-                    <div className="countdown-wrapper">
-                        <div className="countdown-box">
+            <div className="countdown-page-wrapper">
+                <div className="countdown-page-left">
+                </div>
+                <div className="countdown-page-right">
+                    <div className="countdown-box">
+                        <div className="countdown-unit">
                             <div className="countdown-number">{days}</div>
                             <div className="countdown-text">DAYS</div>
                         </div>
-                        <div className="countdown-box">
+                        <div className="countdown-unit">
                             <div className="countdown-number">{hours}</div>
                             <div className="countdown-text">HOURS</div>
                         </div>
-                        <div className="countdown-box">
+                        <div className="countdown-unit">
                             <div className="countdown-number">{minutes}</div>
                             <div className="countdown-text">MINUTES</div>
                         </div>
-                        <div className="countdown-box">
+                        <div className="countdown-unit">
                             <div className="countdown-number">{seconds}</div>
                             <div className="countdown-text">SECONDS</div>
                         </div>
                     </div>
-                </header>
+                </div>
             </div>
         )
     }
 }
 
-export default CountDown;
+export default CountdownPage;

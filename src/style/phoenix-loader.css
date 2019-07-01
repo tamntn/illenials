@@ -1,5 +1,5 @@
 .phoenix-loader-wrapper {
-    background-color: #0a0102;
+    background-color: #050102;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -8,8 +8,8 @@
 }
 
 .phoenix-loader-wrapper iframe {
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
     pointer-events: none;
     user-select: none;
 }

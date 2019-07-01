@@ -1,9 +1,9 @@
 import React from 'react';
-import CountdownTimer from './components/CountdownTimer';
+import CountdownPage from './components/CountdownPage';
 
 function App() {
 	return (
-		<CountdownTimer />
+		<CountdownPage />
 	);
 }
 

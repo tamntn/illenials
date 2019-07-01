@@ -1,0 +1,103 @@
+.countdown-page-wrapper{
+  background-color: #050102;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  color: #f6e3b2;
+}
+
+.countdown-page-left {
+  height: 100vh;
+  width: 50vw;
+  background-image: url('../images/album-artwork-square.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.countdown-page-right {
+  height: 100vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.countdown-box {
+  border: 1px solid #f6e3b2;
+  padding: 16px 24px;
+  border-radius: 8px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  text-align: center;
+}
+
+.countdown-unit {
+  width: 25%;
+}
+
+.countdown-number {
+  font-size: 64px;
+}
+
+.countdown-text {
+  font-size: 12px;
+  font-weight: 300;
+  padding: 4px 0px 8px 0px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .countdown-page-wrapper {
+    display: inherit;
+  }
+
+  .countdown-page-left {
+    width: 100vw;
+    height: 90vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+  .countdown-page-right {
+    width: 100vw;
+    height: 14vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .countdown-box {
+    border: 0px;
+    width: 100%;
+    /* padding: 5% 0px 0px 0px; */
+    padding: 0px;
+  }
+
+  .countdown-unit {
+    width: 21%;
+  }
+
+  .countdown-number {
+    font-size: 48px;
+  }
+
+  .countdown-text {
+    font-size: 8px;
+    padding: 0px;
+  }
+}
