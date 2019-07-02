@@ -1,9 +1,13 @@
 import React from 'react';
 import CountdownPage from './components/CountdownPage';
+import Track from './components/Track';
 
 function App() {
 	return (
-		<CountdownPage />
+		<div>
+			<CountdownPage />
+			<Track />
+		</div>
 	);
 }
 

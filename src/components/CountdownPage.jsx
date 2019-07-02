@@ -12,12 +12,12 @@ ReactGA.pageview('/');
 const AlbumArtwork = posed.div({
     visible: {
         opacity: 1,
-        transition: { duration: 1500 },
+        transition: { duration: 1000 },
         scale: 1.0
     },
     hidden: {
         opacity: 0,
-        transition: { duration: 1500 },
+        transition: { duration: 1000 },
         scale: 1.05
     }
 })
@@ -26,12 +26,23 @@ const CountdownBox = posed.div({
     visible: {
         y: 0,
         opacity: 1,
-        transition: { duration: 1500 },
+        transition: { duration: 1000, delay: 1000 },
     },
     hidden: {
-        y: 25,
+        y: 15,
         opacity: 0,
-        transition: { duration: 1500 }
+        transition: { duration: 1000 }
+    }
+})
+
+const ScrollButton = posed.div({
+    visible: {
+        opacity: 1,
+        transition: { duration: 1000, delay: 2000 }
+    },
+    hidden: {
+        opacity: 0,
+        transition: { duration: 1000 }
     }
 })
 
@@ -89,7 +100,7 @@ class CountdownPage extends Component {
         return (
             <div className="countdown-page-wrapper">
                 <AlbumArtwork className="countdown-page-left" initialPose="hidden" pose="visible">
-                    <img src={albumArtwork} alt="album-artwork"/>
+                    <img src={albumArtwork} alt="album-artwork" />
                 </AlbumArtwork>
                 <div className="countdown-page-right">
                     <CountdownBox className="countdown-box" initialPose="hidden" pose="visible">
@@ -111,6 +122,9 @@ class CountdownPage extends Component {
                         </div>
                     </CountdownBox>
                 </div>
+                <ScrollButton initialPose="hidden" pose="visible">
+                    <a href="#" className="scroll-button"><span></span>Enter Site</a>
+                </ScrollButton>
             </div>
         )
     }
