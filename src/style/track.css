@@ -13,8 +13,10 @@
 
 .menu-left .menu-video {
     position: relative;
-    left: calc((65vw - (100vh / 9 * 16))/2);
+    /* left: calc((65vw - (100vh / 9 * 16))/2); */
+    left: 50%;
     bottom: 0;
+    transform: translate(-50%, 0);
     min-width: 100%;
     min-height: 100%;
     filter: invert(0%) brightness(90%) grayscale(80%);
@@ -46,7 +48,6 @@
 
 .menu-right h2:hover {
     cursor: pointer;
-    /* color: black; */
     transform: translate(20px, 0px);
     transition: all 0.25s ease;
 }
@@ -60,7 +61,7 @@
         width: 100vw;
     }
     .menu-left .menu-video {
-        left: calc((100vw - (100vh / 9 * 16))/2);
+        /* left: calc((100vw - (100vh / 9 * 16))/2); */
         filter: invert(10%) brightness(35%) grayscale(80%);
     }
     .menu-right {
