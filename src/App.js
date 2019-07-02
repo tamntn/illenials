@@ -1,13 +1,16 @@
 import React from 'react';
 import CountdownPage from './components/CountdownPage';
 import Track from './components/Track';
+import ReactPageScroller from "react-page-scroller";
 
 function App() {
 	return (
-		<div>
-			<CountdownPage />
-			<Track />
-		</div>
+		<React.Fragment>
+			<ReactPageScroller>
+				<CountdownPage />
+				<Track />
+			</ReactPageScroller>
+		</React.Fragment>
 	);
 }
 
