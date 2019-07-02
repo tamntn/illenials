@@ -1,0 +1,17 @@
+.welcome-page-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.open-menu-button {
+    color: white;
+    border: 1px solid white;
+    background-color: rgb(255, 145, 0);
+    font-size: 18px;
+    font-family: 'Rajdhani', sans-serif;
+    padding: 8px 16px;
+}

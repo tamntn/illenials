@@ -1,18 +1,32 @@
 import React from 'react';
 import CountdownPage from './components/CountdownPage';
-import Track from './components/Track';
+import WelcomePage from './components/WelcomePage';
 import ReactPageScroller from "react-page-scroller";
+import ReactFullpage from '@fullpage/react-fullpage';
 
-function App() {
-	return (
-		// <React.Fragment>
-			<ReactPageScroller>
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			disableScrolling: false
+		}
+	}
+
+	disableScrolling = (value) => {
+		this.setState({ disableScrolling: value })
+	}
+
+	render() {
+		return (
+			<ReactPageScroller
+				blockScrollUp={this.state.disableScrolling ? true : false}
+				blockScrollDown={this.state.disableScrolling ? true : false}
+			>
 				<CountdownPage />
-				{/* <Track /> */}
-				<div></div>
+				<WelcomePage disableScrolling={this.disableScrolling} />
 			</ReactPageScroller>
-		// </React.Fragment>
-	);
+		);
+	}
 }
 
 export default App;
