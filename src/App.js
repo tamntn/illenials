@@ -5,12 +5,13 @@ import ReactPageScroller from "react-page-scroller";
 
 function App() {
 	return (
-		<React.Fragment>
+		// <React.Fragment>
 			<ReactPageScroller>
 				<CountdownPage />
-				<Track />
+				{/* <Track /> */}
+				<div></div>
 			</ReactPageScroller>
-		</React.Fragment>
+		// </React.Fragment>
 	);
 }
 
