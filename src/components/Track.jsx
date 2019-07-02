@@ -40,7 +40,7 @@ class Track extends Component {
         return (
             <div className="fullscreen-menu-wrapper">
                 <div className="menu-left">
-                    <video className="menu-video" autoPlay muted loop>
+                    <video className="menu-video" playsInline autoPlay muted loop>
                         <source src={recapVideo} type="video/mp4"></source>
                     </video>
                     {/* <iframe src="http://tv.giphy.com/?username=illeniummusic" frameBorder="0" allowFullScreen></iframe> */}
