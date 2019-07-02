@@ -27,10 +27,10 @@ class FullscreenMenu extends Component {
                     {/* <iframe src="http://tv.giphy.com/?username=illeniummusic" frameBorder="0" allowFullScreen></iframe> */}
                 </div>
                 <div className="menu-right">
-                    <h2>Home</h2>
-                    <h2>Bracket</h2>
-                    <h2>About</h2>
-                    <h2 onClick={this.closeMenu}>Close</h2>
+                    <div>Home</div>
+                    <div>Bracket</div>
+                    <div>About</div>
+                    <div onClick={this.closeMenu}>Close</div>
                 </div>
             </div>
         )

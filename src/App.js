@@ -19,6 +19,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<ReactPageScroller
+				animationTimer={500}
 				blockScrollUp={this.state.disableScrolling ? true : false}
 				blockScrollDown={this.state.disableScrolling ? true : false}
 			>

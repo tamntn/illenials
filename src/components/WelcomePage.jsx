@@ -27,6 +27,7 @@ class WelcomePage extends Component {
     render() {
         return <div>
             <div className="welcome-page-wrapper">
+                <h3>Welcome Fellow Illenials,</h3>
                 <button
                     className="open-menu-button"
                     onClick={this.onOpenFullscreenMenu}
