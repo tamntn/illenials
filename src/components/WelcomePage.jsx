@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from '@material-ui/core';
 import FullscreenMenu from './FullscreenMenu';
 import '../style/welcome-page.css';
 
@@ -27,11 +28,14 @@ class WelcomePage extends Component {
     render() {
         return <div>
             <div className="welcome-page-wrapper">
-                <h3>Welcome Fellow Illenials,</h3>
-                <button
+                <h2>Welcome fellow illenials,</h2>
+                <Button
+                    variant="outlined"
+                    size="large"
+                    color="primary"
                     className="open-menu-button"
                     onClick={this.onOpenFullscreenMenu}
-                >Menu</button>
+                >Menu</Button>
             </div>
             {this.state.menuVisible ? <FullscreenMenu close={this.closeFullscreenMenu} /> : null}
         </div>

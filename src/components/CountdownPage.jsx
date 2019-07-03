@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import posed from 'react-pose';
-import ReactGA from 'react-ga';
 import PhoenixLoader from './PhoenixLoader';
-import '../style/countdown-page.css';
 import albumArtwork from '../images/album-artwork-square.jpg';
-
-ReactGA.initialize('UA-143098154-1');
-ReactGA.pageview('/');
+import '../style/countdown-page.css';
 
 const AlbumArtwork = posed.div({
     visible: {
         opacity: 1,
-        transition: { duration: 1000 },
+        transition: { duration: 1000, ease: 'easeIn' },
         scale: 1.0
     },
     hidden: {
@@ -26,7 +22,7 @@ const CountdownBox = posed.div({
     visible: {
         y: 0,
         opacity: 1,
-        transition: { duration: 1000, delay: 1000 },
+        transition: { duration: 1000, delay: 1000, ease: 'easeIn' },
     },
     hidden: {
         y: 15,
@@ -38,7 +34,7 @@ const CountdownBox = posed.div({
 const ScrollButton = posed.div({
     visible: {
         opacity: 1,
-        transition: { duration: 1000, delay: 2000 }
+        transition: { duration: 1000, delay: 2000, ease: 'easeIn' }
     },
     hidden: {
         opacity: 0,
