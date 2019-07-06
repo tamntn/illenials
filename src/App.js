@@ -2,21 +2,34 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import CountdownPage from './components/CountdownPage';
-import WelcomePage from './components/WelcomePage';
-import ReactPageScroller from "react-page-scroller";
-// import ReactFullpage from '@fullpage/react-fullpage';
+import Home from './views/Home';
 
 ReactGA.initialize('UA-143098154-1');
 ReactGA.pageview('/');
 
 const theme = createMuiTheme({
 	palette: {
+		type: 'dark',
 		primary: {
-			light: "#7986cb",
+			light: "#f6e3b2",
 			main: "#f6e3b2",
-			dark: "#303f9f"
-		}
+			dark: "#f6e3b2"
+		},
+		text: {
+			primary: "#f6e3b2",
+			// secondary: "rgba(0, 0, 0, 0.54)",
+			// disabled: "rgba(0, 0, 0, 0.38)",
+			// hint: "rgba(0, 0, 0, 0.38)",
+		},
+		// divider: '#f6e3b2',
+		// action: {
+		// 	active: "rgba(0, 0, 0, 0.54)",
+		// 	hover: "rgba(0, 0, 0, 0.08)",
+		// 	hoverOpacity: 0.08,
+		// 	selected: "rgba(0, 0, 0, 0.14)",
+		// 	disabled: "rgba(0, 0, 0, 0.26)",
+		// 	disabledBackground: "rgba(0, 0, 0, 0.12)",
+		// }
 	}
 })
 
@@ -24,46 +37,14 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			disableScrolling: false
 		}
 	}
-
-	componentDidMount() {
-		window.addEventListener('keydown', this.goToPage);
-	}
-
-	disableScrolling = (value) => {
-		this.setState({ disableScrolling: value })
-	}
-
-	goToPage = (pageNumber) => {
-		console.log('down');
-		this.reactPageScroller.goToPage(pageNumber);
-	  }
 
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				<ReactPageScroller
-					ref={c => this.reactPageScroller = c}
-					animationTimer={500}
-					blockScrollUp={this.state.disableScrolling ? true : false}
-					blockScrollDown={this.state.disableScrolling ? true : false}
-				>
-					<CountdownPage />
-					<WelcomePage disableScrolling={this.disableScrolling} />
-				</ReactPageScroller>
+				<Home />
 			</ThemeProvider>
-			// <ReactFullpage
-			// 	render={({ state, fullpageApi }) => {
-			// 		return (
-			// 			<ReactFullpage.Wrapper>
-			// 				<CountdownPage />
-			// 				<WelcomePage />
-			// 			</ReactFullpage.Wrapper>
-			// 		);
-			// 	}}
-			// />
 		);
 	}
 }
