@@ -17,7 +17,6 @@ class Home extends Component {
     }
 
     goToPage = (pageNumber) => {
-        console.log('down');
         this.reactPageScroller.goToPage(pageNumber);
     }
 
@@ -26,10 +25,11 @@ class Home extends Component {
             <ReactPageScroller
                 ref={c => this.reactPageScroller = c}
                 animationTimer={500}
+                containerHeight={window.innerHeight}
                 blockScrollUp={this.state.disableScrolling ? true : false}
                 blockScrollDown={this.state.disableScrolling ? true : false}
             >
-                <CountdownPage />
+                <CountdownPage goToPage={this.goToPage} />
                 <WelcomePage disableScrolling={this.disableScrolling} />
             </ReactPageScroller>
         </div>

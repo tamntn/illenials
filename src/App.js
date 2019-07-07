@@ -2,7 +2,6 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import Div100vh from 'react-div-100vh';
 import Home from './views/Home';
 
 ReactGA.initialize('UA-143098154-1');
@@ -44,9 +43,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				<Div100vh>
-					<Home />
-				</Div100vh>
+				<Home />
 			</ThemeProvider>
 		);
 	}

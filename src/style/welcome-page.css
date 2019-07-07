@@ -1,6 +1,6 @@
 .welcome-page-wrapper {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     color: #f6e3b2;
     display: flex;
     flex-direction: column;
