@@ -43,11 +43,11 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<ThemeProvider theme={theme}>
-				<Div100vh>
+			<Div100vh>
+				<ThemeProvider theme={theme}>
 					<Home />
-				</Div100vh>
-			</ThemeProvider>
+				</ThemeProvider>
+			</Div100vh>
 		);
 	}
 }
