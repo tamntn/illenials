@@ -8,8 +8,19 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            scrollerHeight: window.innerHeight,
             disableScrolling: false
         }
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', () => {
+            this.setState({ scrollerHeight: window.innerHeight })
+        })
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize');
     }
 
     disableScrolling = (value) => {
@@ -25,7 +36,7 @@ class Home extends Component {
             <ReactPageScroller
                 ref={c => this.reactPageScroller = c}
                 animationTimer={500}
-                containerHeight={window.innerHeight}
+                containerHeight={this.state.scrollerHeight}
                 blockScrollUp={this.state.disableScrolling ? true : false}
                 blockScrollDown={this.state.disableScrolling ? true : false}
             >
