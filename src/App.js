@@ -2,7 +2,10 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './views/Home';
+import AudioPlayer from './components/AudioPlayer';
+import NotFound404 from './views/NotFound404';
 
 ReactGA.initialize('UA-143098154-1');
 ReactGA.pageview('/');
@@ -43,7 +46,13 @@ class App extends React.Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				<Home />
+				<BrowserRouter>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/audio" component={AudioPlayer} />
+						<Route component={NotFound404} />
+					</Switch>
+				</BrowserRouter>
 			</ThemeProvider>
 		);
 	}
