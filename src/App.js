@@ -7,6 +7,28 @@ import Home from './views/Home';
 import AudioPlayer from './components/AudioPlayer';
 import NotFound404 from './views/NotFound404';
 
+import firebase from 'firebase';
+
+firebase.initializeApp({
+	apiKey: "AIzaSyCEOopC9paw5TwmTklec8bbRKHUhQjrw_k",
+	authDomain: "illenials-2019.firebaseapp.com",
+	databaseURL: "https://illenials-2019.firebaseio.com",
+	projectId: "illenials-2019",
+	storageBucket: "illenials-2019.appspot.com",
+	messagingSenderId: "365562628837",
+	appId: "1:365562628837:web:7b1b44d4c89f385a"
+});
+
+var db = firebase.firestore();
+
+var songsRef = db.collection('songs')
+
+songsRef.get().then(querySnapshot => {
+	querySnapshot.forEach(doc => {
+		console.log(doc.data().likes.length);
+	});
+})
+
 ReactGA.initialize('UA-143098154-1');
 ReactGA.pageview('/');
 
