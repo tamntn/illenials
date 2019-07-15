@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactPageScroller from "react-page-scroller";
 import CountdownPage from '../components/CountdownPage';
 import WelcomePage from '../components/WelcomePage';
-// import ReactFullpage from '@fullpage/react-fullpage';
 
 class Home extends Component {
     constructor(props) {
@@ -44,16 +43,6 @@ class Home extends Component {
                 <WelcomePage disableScrolling={this.disableScrolling} />
             </ReactPageScroller>
         </div>
-        // <ReactFullpage
-        // 	render={({ state, fullpageApi }) => {
-        // 		return (
-        // 			<ReactFullpage.Wrapper>
-        // 				<CountdownPage />
-        // 				<WelcomePage />
-        // 			</ReactFullpage.Wrapper>
-        // 		);
-        // 	}}
-        // />
     }
 }
 
