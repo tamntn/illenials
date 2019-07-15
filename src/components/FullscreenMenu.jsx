@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import posed from 'react-pose';
 import { withStyles } from '@material-ui/styles';
 import { CloseRounded } from '@material-ui/icons';
-import recapVideo from '../images/recap-min.mp4';
 import '../style/fullscreen-menu.css';
 
 const styles = {
@@ -80,7 +79,7 @@ class FullscreenMenu extends Component {
             <FullscreenMenuWrapper className="fullscreen-menu-wrapper" pose={this.state.closing ? 'hidden' : 'visible'}>
                 <FullscreenMenuLeft className="menu-left" initialPose="hidden" pose="visible">
                     <video className="menu-video" playsInline autoPlay muted loop>
-                        <source src={recapVideo} type="video/mp4"></source>
+                        <source src="https://illenials-audio-player.s3.us-east-2.amazonaws.com/app-videos/recap-min.mp4" type="video/mp4"></source>
                     </video>
                 </FullscreenMenuLeft>
                 <FullscreenMenuRight className="menu-right" initialPose="hidden" pose="visible">
