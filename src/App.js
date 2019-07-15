@@ -7,7 +7,8 @@ import Home from './views/Home';
 import AudioPlayer from './components/AudioPlayer';
 import NotFound404 from './views/NotFound404';
 
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 firebase.initializeApp({
 	apiKey: "AIzaSyCEOopC9paw5TwmTklec8bbRKHUhQjrw_k",

@@ -13,13 +13,15 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', () => {
-            this.setState({ scrollerHeight: window.innerHeight })
-        })
+        window.addEventListener('resize', this.onWindowResize)
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize');
+        window.removeEventListener('resize', this.onWindowResize);
+    }
+
+    onWindowResize = () => {
+        this.setState({ scrollerHeight: window.innerHeight })
     }
 
     disableScrolling = (value) => {

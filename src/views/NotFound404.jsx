@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../style/style-views/not-found-404.css';
 
 class NotFound404 extends Component {
@@ -10,19 +11,27 @@ class NotFound404 extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', () => {
-            this.setState({ innerHeight: window.innerHeight })
-        })
+        window.addEventListener('resize', this.onWindowResize)
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize');
+        window.removeEventListener('resize', this.onWindowResize);
+    }
+
+    onWindowResize = () => {
+        this.setState({ innerHeight: window.innerHeight })
     }
 
     render() {
         return <div className="not-found" style={{ height: this.state.innerHeight }}>
-            <div className="not-found-text">Sorry... This page doesn't exist</div>
-            <iframe src="https://tv.giphy.com/?username=illeniummusic" frameBorder="0" allowFullScreen></iframe>
+            <div className="not-found-text">Sorry... This page doesn't exist 🥺</div>
+            <Link to="/">Home</Link>
+            <iframe
+                src="https://tv.giphy.com/?username=illeniummusic"
+                frameBorder="0"
+                allowFullScreen
+                title="404-giphy"
+            ></iframe>
         </div>
     }
 };
