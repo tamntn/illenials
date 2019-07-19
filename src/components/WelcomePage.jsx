@@ -27,7 +27,7 @@ class WelcomePage extends Component {
 
     render() {
         return <div className="welcome-page-wrapper">
-            <h2>Welcome fellow illenials,</h2>
+            <div>Welcome fellow illenials,</div>
             <Button
                 variant="outlined"
                 size="large"
