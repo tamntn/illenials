@@ -25,11 +25,16 @@ class SongItemSquare extends Component {
         const isSpotify = song_data.spotify_uri;
 
         return (
-            <Paper className={`song-item-square ${classes.paper}`} onClick={() => this.props.selectSong(song_data)}>
-                <img src={isSpotify ? song_data.album.artwork_url : song_data.artwork_url} />
+            <Paper className={`song-item-square ${classes.paper}`}>
+                <img
+                    src={isSpotify ? song_data.album.artwork_url : song_data.artwork_url}
+                    onClick={() => this.props.selectSong(song_data)}
+                />
                 <div>
                     <div className="info">
-                        <div className="title">{song_data.name}</div>
+                        <div className="title"
+                            onClick={() => this.props.selectSong(song_data)}
+                        >{song_data.name}</div>
                         <div className="artist">
                             {
                                 song_data.artists.map((artist, i) => {
