@@ -1,0 +1,136 @@
+.song-item-full {
+    display: flex;
+    flex-direction: row;
+    margin: 24px 0px;
+}
+
+.song-item-full img {
+    width: 136px;
+    height: 136px;
+    border-radius: 8px;
+}
+
+.song-item-full .song-item-full-right {
+    width: 100%;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.song-item-full .song-item-full-right .top .title {
+    color: white;
+    font-size: 21px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.song-item-full .song-item-full-right .top .artist {
+    width: 100%;
+    color: #757575;
+}
+
+.song-item-full .song-item-full-right .top .album {
+    color: #757575;
+    margin-top: 4px;
+}
+
+.song-item-full .song-item-full-right .top a {
+    color: #757575;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+}
+
+.song-item-full .song-item-full-right .top a:hover {
+    color: #f6e3b2;
+}
+
+.song-item-full .song-item-full-right .bottom {
+    width: 100%;
+    color: #757575;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.song-item-full .song-item-full-right .bottom .spotify-icon {
+    color: #1DB954;
+    font-size: 23px;
+    margin-right: 12px;
+}
+
+.song-item-full .song-item-full-right .bottom .spotify-icon:hover {
+    cursor: pointer;
+}
+
+.song-item-full .song-item-full-right .bottom .soundcloud-icon {
+    color: #ff5500;
+    font-size: 23px;
+}
+
+.song-item-full .song-item-full-right .bottom .soundcloud-icon:hover {
+    cursor: pointer;
+}
+
+.song-item-full .song-item-full-right .bottom .heart {
+    color: #757575;
+    font-size: 22px;
+}
+
+.song-item-full .song-item-full-right .bottom .heart:hover {
+    cursor: pointer;
+}
+
+.song-item-full .song-item-full-right .bottom .heart-solid {
+    color: #f44336;
+    font-size: 22px;
+}
+
+.song-item-full .song-item-full-right .bottom .heart-soid:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 599px) {
+    .song-item-full {
+        margin: 16px 0px;
+    }
+    .song-item-full img {
+        width: 96px;
+        height: 96px;
+    }
+    .song-item-full .song-item-full-right {
+        padding-left: 12px;
+    }
+    .song-item-full .song-item-full-right .top .title {
+        width: calc(100vw - 140px);
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 18px;
+    }
+    .song-item-full .song-item-full-right .top .artist {
+        font-size: 15px;
+    }
+    .song-item-full .song-item-full-right .top .album {
+        display: none;
+    }
+    .song-item-full .song-item-full-right .bottom .spotify-icon {
+        font-size: 19px;
+    }
+    .song-item-full .song-item-full-right .bottom .soundcloud-icon {
+        font-size: 20px;
+    }
+    .song-item-full .song-item-full-right .bottom .heart {
+        font-size: 19px;
+    }
+    .song-item-full .song-item-full-right .bottom .heart-solid {
+        font-size: 19px;
+    }
+}

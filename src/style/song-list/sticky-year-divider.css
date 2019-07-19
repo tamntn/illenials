@@ -1,0 +1,39 @@
+.sticky-year-divider {
+    background-color: #050102;
+    color: white;
+    font-size: 41px;
+    font-weight: 700;
+    padding: 8px 0px;
+    border-bottom: 1px solid #212121;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sticky-year-divider .action {
+    color: #757575;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    padding: 6px 16px;
+    border: 1px solid #757575;
+    border-radius: 4px;
+    transition: all .25s;
+}
+
+.sticky-year-divider .action:hover {
+    color: #f6e3b2;
+    cursor: pointer;
+    border: 1px solid #f6e3b2;
+}
+
+@media screen and (max-width: 599px) {
+    .sticky-year-divider {
+        font-size: 36px;
+        padding: 4px 0px;
+    }
+}

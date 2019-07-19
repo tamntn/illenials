@@ -8,6 +8,11 @@
     justify-content: center;
 }
 
+.welcome-page-wrapper div {
+    font-size: 23px;
+    margin-bottom: 16px;
+}
+
 .open-menu-button {
     color: white;
     border: 1px solid white;

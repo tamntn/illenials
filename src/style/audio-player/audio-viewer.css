@@ -1,0 +1,129 @@
+.audio-viewer {
+    width: 100vw;
+    height: 100vh;
+    /* max-height: 100vh; */
+    overflow-x: hidden;
+}
+
+.audio-viewer .collapse {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    transform: rotate(180deg);
+}
+
+.audio-viewer .collapse .collapse-button {
+    font-size: 30px;
+    color: #757575;
+}
+
+.audio-viewer .collapse .collapse-button:hover {
+    cursor: pointer;
+}
+
+.audio-viewer .main {
+    width: 100%;
+}
+
+.audio-viewer .main .artwork {
+    width: 100%;
+    height: calc(100vw - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.audio-viewer .main .artwork .full {
+    width: calc(100vw - 80px);
+    height: calc(100vw - 80px);
+    border-radius: 8px;
+    transition: all 0.25s;
+}
+
+.audio-viewer .main .artwork .min {
+    width: calc(100vw - 128px);
+    height: calc(100vw - 128px);
+    border-radius: 8px;
+    transition: all 0.25s;
+}
+
+.audio-viewer .main .slider {
+    width: 100%;
+    padding: 4px 40px 0px 40px;
+}
+
+.audio-viewer .main .time {
+    padding: 0px 40px;
+    color: #757575;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audio-viewer .main .name {
+    padding: 12px 40px 0px 40px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.audio-viewer .main .artists {
+    padding: 0px 40px;
+    text-align: center;
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.audio-viewer .main .actions {
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audio-viewer .main .actions .play-button {
+    color: white;
+    font-size: 43px;
+}
+
+.audio-viewer .main .actions .backward-button {
+    color: white;
+    font-size: 32px;
+    /* padding-left: 16px; */
+}
+
+.audio-viewer .main .actions .forward-button {
+    color: white;
+    font-size: 32px;
+    /* padding-right: 16px; */
+}
+
+.audio-viewer .main .actions .shuffle-button, .like-button {
+    color: #757575;
+    font-size: 20px;
+}
+
+.audio-viewer .main .lyrics {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #757575;
+}
+
+.audio-viewer .main .lyrics .lyrics-icon {
+    font-size: 11px;
+}

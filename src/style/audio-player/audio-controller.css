@@ -1,0 +1,49 @@
+.audio-controller-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 56px;
+    background-color: #181818;
+}
+
+.audio-controller-wrapper .mobile {
+    height: 100%;
+}
+
+.audio-controller-wrapper .mobile .actions {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audio-controller-wrapper .mobile .actions .song-info {
+    text-align: center;
+}
+
+.audio-controller-wrapper .mobile .actions .song-info .title {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.audio-controller-wrapper .mobile .actions .song-info .artists {
+    color: #757575;
+    font-size: 13px;
+    margin-top: -2px;
+}
+
+.audio-controller-wrapper .mobile .actions .play-button {
+    color: #757575;
+    font-size: 23px;
+    margin-left: 12px;
+}
+
+.audio-controller-wrapper .mobile .actions .heart-button {
+    color: #757575;
+    font-size: 23px;
+    margin-right: 12px;
+}
