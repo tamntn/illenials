@@ -11,7 +11,7 @@ import '../../style/audio-player/audio-viewer.css';
 
 const drawerStyles = {
     root: {
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         overflowY: 'auto'
     },
     paperAnchorBottom: {
