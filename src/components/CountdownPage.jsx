@@ -119,7 +119,7 @@ class CountdownPage extends Component {
                     </CountdownBox>
                 </div>
                 <ScrollButton initialPose="hidden" pose="visible" onClick={() => this.props.goToPage(1)}>
-                    <a href="#" className="scroll-button"><span></span>Enter Site</a>
+                    <a href="/" className="scroll-button"><span></span>Enter Site</a>
                 </ScrollButton>
             </div>
         )
