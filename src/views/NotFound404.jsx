@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../style/style-views/not-found-404.css';
+import '../style/views/not-found-404.css';
 
 class NotFound404 extends Component {
     constructor(props) {
