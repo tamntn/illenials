@@ -42,13 +42,17 @@ class SongItemFull extends Component {
         }
     }
 
+    stopSelectSongPropagation = (event) => {
+        event.stopPropagation();
+    }
+
     render() {
         const { song_data, classes } = this.props;
         const isSpotify = song_data.spotify_uri;
         const isExplicit = song_data.explicit;
 
         return (
-            <Paper className={`song-item-full ${classes.paper}`} square>
+            <Paper className={`song-item-full ${classes.paper}`} onClick={() => this.props.selectSong(song_data)}>
                 <img src={isSpotify ? song_data.album.artwork_url : song_data.artwork_url} />
                 <div className="song-item-full-right">
                     <div className="top">
@@ -57,13 +61,13 @@ class SongItemFull extends Component {
                             {
                                 song_data.artists.map((artist, i) => {
                                     return <React.Fragment key={i}>
-                                        <a href={artist.spotify_url} target="_blank">{artist.name}</a>
+                                        <a href={artist.spotify_url} target="_blank" onClick={this.stopPropagation}>{artist.name}</a>
                                         {song_data.artists.length === i + 1 ? null : <span>,&nbsp;</span>}
                                     </React.Fragment>
                                 })
                             }
                         </div>
-                        <div className="album">
+                        <div className="album" onClick={this.stopSelectSongPropagation}>
                             {
                                 this.getAlbumText(song_data)
                             }
@@ -72,15 +76,19 @@ class SongItemFull extends Component {
                     <div className="bottom">
                         <div>
                             {
-                                isSpotify ? <a href={song_data.spotify_url} target="_blank">
-                                    <FontAwesomeIcon icon={faSpotify} className="spotify-icon" />
-                                </a> : null
+                                isSpotify
+                                    ?
+                                    <a href={song_data.spotify_url} target="_blank" onClick={this.stopSelectSongPropagation}>
+                                        <FontAwesomeIcon icon={faSpotify} className="spotify-icon" />
+                                    </a>
+                                    :
+                                    null
                             }
-                            <a href={song_data.soundcloud_url} target="_blank">
+                            <a href={song_data.soundcloud_url} target="_blank" onClick={this.stopSelectSongPropagation}>
                                 <FontAwesomeIcon icon={faSoundcloud} className="soundcloud-icon" />
                             </a>
                         </div>
-                        <div>
+                        <div onClick={this.stopSelectSongPropagation}>
                             {/* <span>30</span> */}
                             <FontAwesomeIcon icon={faHeart} className="heart" />
                             {/* <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" /> */}

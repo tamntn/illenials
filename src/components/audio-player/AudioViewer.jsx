@@ -50,6 +50,16 @@ class AudioViewer extends Component {
     }
 
     componentDidMount() {
+        this.fetchDominantColor();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (!(prevProps.song_data === this.props.song_data)) {
+            this.fetchDominantColor();
+        }
+    }
+
+    fetchDominantColor = () => {
         const { song_data } = this.props;
 
         if (song_data) {
@@ -73,10 +83,7 @@ class AudioViewer extends Component {
     }
 
     onSliderChange = (event, value) => {
-        this.setState({
-            sliderValue: value,
-            minimizeImage: true
-        });
+        this.setState({ sliderValue: value, minimizeImage: true });
     }
 
     onSliderChangeCommitted = () => {
@@ -115,7 +122,7 @@ class AudioViewer extends Component {
                 <div className="artwork">
                     <img
                         className={minimizeArtwork ? "min" : "full"}
-                        style={minimizeArtwork ? null : { boxShadow: `0px 16px 72px 4px rgba(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]}, 0.35)` }}
+                        style={minimizeArtwork ? null : { boxShadow: `0px 16px 72px 4px rgba(${dominantColorBright[0]}, ${dominantColorBright[1]}, ${dominantColorBright[2]}, 0.35)` }}
                         src={artworkUrl} />
                 </div>
                 <div className="slider">

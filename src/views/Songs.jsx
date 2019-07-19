@@ -11,7 +11,6 @@ import AudioController from '../components/audio-player/AudioController';
 import Leaderboard from '../components/song-vote/Leaderboard';
 import '../style/views/songs.css';
 
-
 class AudioPlayer extends Component {
     constructor(props) {
         super(props);
@@ -29,8 +28,6 @@ class AudioPlayer extends Component {
     componentDidMount() {
         this.fetchSongs();
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot) { }
 
     fetchSongs = () => {
         const firebase = this.context;
@@ -82,6 +79,10 @@ class AudioPlayer extends Component {
 
     closeLeaderboard = () => {
         this.setState({ openLeaderboard: false })
+    }
+
+    selectSong = (song) => {
+        this.setState({ playing_song: song });
     }
 
     // select = (audioUrl) => {
@@ -153,6 +154,7 @@ class AudioPlayer extends Component {
                             <SongListFull
                                 songs_by_year={this.state.all_songs_by_year}
                                 openLeaderboard={this.openLeaderboard}
+                                selectSong={this.selectSong}
                             />
                         }
                         {
@@ -161,6 +163,7 @@ class AudioPlayer extends Component {
                             <SongListSquare
                                 songs_by_year={this.state.all_songs_by_year}
                                 openLeaderboard={this.openLeaderboard}
+                                selectSong={this.selectSong}
                             />
                         }
                     </div>
