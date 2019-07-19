@@ -23,7 +23,7 @@ class AudioController extends Component {
         this.state = {
             completed: 1,
             openViewer: false,
-            isPlaying: false
+            isPlaying: true
         }
     }
 
@@ -87,6 +87,7 @@ class AudioController extends Component {
             </div>
             <AudioViewer
                 open={openViewer}
+                openViewer={this.openViewer}
                 closeViewer={this.closeViewer}
                 song_data={song_data}
                 isPlaying={isPlaying}

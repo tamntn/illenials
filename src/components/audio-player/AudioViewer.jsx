@@ -78,6 +78,10 @@ class AudioViewer extends Component {
         return artists.map(artist => artist.name).join(", ");
     }
 
+    onOpen = () => {
+        this.props.openViewer();
+    }
+
     onClose = () => {
         this.props.closeViewer();
     }
@@ -174,9 +178,11 @@ class AudioViewer extends Component {
                 ?
                 <AudioViewerSwipableDrawer
                     anchor="bottom"
+                    disableSwipeToOpen={false}
+                    swipeAreaWidth={56}
                     open={this.props.open}
-                    onClose={() => this.onClose()}
-                    onOpen={event => console.log(event)}
+                    onClose={this.onClose}
+                    onOpen={this.onOpen}
                 >
                     {this.renderDrawer()}
                 </AudioViewerSwipableDrawer>

@@ -28,6 +28,7 @@ class Leaderboard extends Component {
     render() {
         return <LeaderboardDrawer
             anchor="top"
+            disableSwipeToOpen={false}
             open={this.props.open}
             onClose={() => this.onClose()}
             onOpen={event => console.log(event)}
