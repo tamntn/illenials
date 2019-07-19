@@ -43,7 +43,7 @@ class AudioPlayer extends Component {
             this.setState({
                 all_songs: songs,
                 all_songs_by_year: this.generateSongsByYearList(songs),
-                playing_song: songs[6].data
+                playing_song: songs[0].data
             })
         })
     }

@@ -42,7 +42,7 @@ class SongListSquare extends Component {
                             {
                                 songs.map(song => {
                                     return <Grid item key={song.id} xs={6} sm={4} md={3} lg={3} xl={3}>
-                                        <SongItemSquare song_data={song.data} />
+                                        <SongItemSquare song_data={song.data} selectSong={this.props.selectSong} />
                                     </Grid>
                                 })
                             }

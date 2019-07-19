@@ -1,3 +1,5 @@
+.songs-wrapper {}
+
 .songs-action-bar {
     display: flex;
     flex-direction: row;
@@ -54,15 +56,15 @@
 
 @media screen and (max-width: 959px) {
     .songs-wrapper {
-        padding: 0px 24px
+        padding: 0px 24px;
     }
 }
 
 @media screen and (max-width: 599px) {
+    .songs-wrapper {
+        padding: 0px 16px 56px 16px;
+    }
     .songs-action-bar {
         padding: 10px 0px 16px 0px;
-    }
-    .songs-wrapper {
-        padding: 0px 16px
     }
 }
