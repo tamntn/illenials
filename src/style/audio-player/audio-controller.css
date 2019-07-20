@@ -22,28 +22,33 @@
 
 .audio-controller-wrapper .mobile .actions .song-info {
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .audio-controller-wrapper .mobile .actions .song-info .title {
     color: white;
     font-size: 16px;
     font-weight: 500;
+    margin-top: 2px;
 }
 
 .audio-controller-wrapper .mobile .actions .song-info .artists {
     color: #757575;
     font-size: 13px;
+    font-weight: 500;
     margin-top: -2px;
 }
 
 .audio-controller-wrapper .mobile .actions .play-button {
     color: #757575;
     font-size: 23px;
-    margin-left: 12px;
+    margin: 0px 12px;
 }
 
 .audio-controller-wrapper .mobile .actions .heart-button {
     color: #757575;
     font-size: 23px;
-    margin-right: 12px;
+    margin: 0px 12px;
 }

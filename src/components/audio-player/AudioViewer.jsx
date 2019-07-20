@@ -179,7 +179,6 @@ class AudioViewer extends Component {
                 <AudioViewerSwipableDrawer
                     anchor="bottom"
                     disableSwipeToOpen={false}
-                    swipeAreaWidth={56}
                     open={this.props.open}
                     onClose={this.onClose}
                     onOpen={this.onOpen}

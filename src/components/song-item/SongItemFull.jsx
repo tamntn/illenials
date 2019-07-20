@@ -61,7 +61,7 @@ class SongItemFull extends Component {
                             {
                                 song_data.artists.map((artist, i) => {
                                     return <React.Fragment key={i}>
-                                        <a href={artist.spotify_url} target="_blank" onClick={this.stopPropagation}>{artist.name}</a>
+                                        <a href={artist.spotify_url} target="_blank" onClick={this.stopSelectSongPropagation}>{artist.name}</a>
                                         {song_data.artists.length === i + 1 ? null : <span>,&nbsp;</span>}
                                     </React.Fragment>
                                 })

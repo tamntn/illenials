@@ -11,6 +11,10 @@ const AudioProgress = withStyles({
     root: {
         height: 3,
         backgroundColor: 'transparent',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%'
     },
     bar: {
         backgroundColor: '#e65100',
@@ -21,7 +25,7 @@ class AudioController extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            completed: 1,
+            completed: 35,
             openViewer: false,
             isPlaying: true
         }
