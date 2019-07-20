@@ -22,7 +22,6 @@ class AudioPlayer extends Component {
             view_option: viewOptions.full,
             openLeaderboard: false
         }
-        this.audio = React.createRef();
     }
 
     componentDidMount() {
@@ -42,8 +41,7 @@ class AudioPlayer extends Component {
             }));
             this.setState({
                 all_songs: songs,
-                all_songs_by_year: this.generateSongsByYearList(songs),
-                playing_song: songs[0].data
+                all_songs_by_year: this.generateSongsByYearList(songs)
             })
         })
     }
@@ -85,16 +83,6 @@ class AudioPlayer extends Component {
         this.setState({ playing_song: song });
     }
 
-    // select = (audioUrl) => {
-    //     this.audio.current.src = audioUrl;
-    //     this.audio.current.play();
-    //     console.log(this.audio);
-    // }
-
-    // play = () => {
-    //     this.state.audio.play();
-    // }
-
     render() {
         const { search_text, view_option, playing_song } = this.state;
 
@@ -103,21 +91,6 @@ class AudioPlayer extends Component {
                 <Grid item xs={'auto'} sm={'auto'} md={'auto'} lg={2} xl={3}></Grid>
                 <Grid item xs={12} sm={12} md={12} lg={8} xl={6}>
                     <div className="songs-wrapper">
-                        {/* <div>
-                    <audio controls type="audio/mpeg">
-                        <source
-                            src="https://www.dropbox.com/s/xu6n9zomqmix3rk/Niykee%20Heaton%20-%20Infinity%20%28Illenium%20Remix%29.mp3?dl=1"
-                        ></source>
-                    </audio>
-                </div> */}
-                        {/* <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => {
-                    this.select("https://illenials-audio-player.s3.us-east-2.amazonaws.com/Kompany+-+Rapture.mp3");
-                    // this.play();
-                }}
-            >Play 1</Button> */}
                         <div className="songs-action-bar">
                             <TextField
                                 id="outlined-name"

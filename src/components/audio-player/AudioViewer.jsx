@@ -36,12 +36,12 @@ class AudioViewer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sliderValue: 10,
             minimizeImage: false,
             dominantColor: [255, 255, 255],
             dominantColorBright: [255, 255, 255],
             showLyrics: false,
-            isSwipable: true
+            isSwipable: true,
+            seekingValue: null
         }
 
         this.wrapper = React.createRef();
@@ -74,6 +74,12 @@ class AudioViewer extends Component {
         }
     }
 
+    displayTime = (durationInSeconds) => {
+        const minutes = Math.floor(durationInSeconds / 60);
+        const seconds = durationInSeconds % 60;
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+    }
+
     displayArtists = (artists) => {
         return artists.map(artist => artist.name).join(", ");
     }
@@ -87,11 +93,12 @@ class AudioViewer extends Component {
     }
 
     onSliderChange = (event, value) => {
-        this.setState({ sliderValue: value, minimizeImage: true });
+        this.setState({ seekingValue: value, minimizeImage: true });
     }
 
-    onSliderChangeCommitted = () => {
-        this.setState({ minimizeImage: false })
+    onSliderChangeCommitted = (event, value) => {
+        this.setState({ seekingValue: null, minimizeImage: false });
+        this.props.updateCurrentTime(value);
     }
 
     scrollToLyrics = () => {
@@ -112,8 +119,8 @@ class AudioViewer extends Component {
     }
 
     renderDrawer = () => {
-        const { sliderValue, minimizeImage, dominantColor, dominantColorBright, isSwipable } = this.state;
-        const { song_data, isPlaying, play, pause } = this.props;
+        const { minimizeImage, dominantColor, dominantColorBright, isSwipable, seekingValue } = this.state;
+        const { song_data, isPlaying, play, pause, current, duration } = this.props;
         const isSpotify = song_data.spotify_uri;
         const artworkUrl = isSpotify ? song_data.album.artwork_url : song_data.artwork_url;
         const minimizeArtwork = (minimizeImage || !isPlaying);
@@ -130,14 +137,17 @@ class AudioViewer extends Component {
                         src={artworkUrl} />
                 </div>
                 <div className="slider">
-                    <AudioSlider value={sliderValue}
+                    <AudioSlider
+                        value={seekingValue ? seekingValue : current}
                         onChange={this.onSliderChange}
                         onChangeCommitted={this.onSliderChangeCommitted}
-                        aria-labelledby="continuous-slider" />
+                        aria-labelledby="continuous-slider"
+                        min={0}
+                        max={duration} />
                 </div>
                 <div className="time">
-                    <div>{sliderValue}</div>
-                    <div>-2:48</div>
+                    <div>{seekingValue ? this.displayTime(seekingValue) : this.displayTime(current)}</div>
+                    <div>{this.displayTime(duration)}</div>
                 </div>
                 <div className="name">
                     {song_data.name}
@@ -179,6 +189,7 @@ class AudioViewer extends Component {
                 <AudioViewerSwipableDrawer
                     anchor="bottom"
                     disableSwipeToOpen={false}
+                    swipeAreaWidth={16}
                     open={this.props.open}
                     onClose={this.onClose}
                     onOpen={this.onOpen}

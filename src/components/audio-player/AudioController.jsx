@@ -25,10 +25,22 @@ class AudioController extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            completed: 35,
             openViewer: false,
-            isPlaying: true
+            isPlaying: true,
+            audioLength: undefined,
+            audioCurrentTime: undefined
         }
+
+        this.audio = React.createRef();
+    }
+
+    componentDidMount() {
+        this.play();
+    }
+
+    componentDidUpdate(prevProps) {
+        const newSongData = prevProps.song_data !== this.props.song_data;
+        if (newSongData) this.switchSong();
     }
 
     openViewer = () => {
@@ -39,18 +51,53 @@ class AudioController extends Component {
         this.setState({ openViewer: false });
     }
 
+    normaliseProgress = () => {
+        if (isNaN(this.state.audioLength)) {
+            return 0.1
+        } else {
+            return this.state.audioCurrentTime * 100 / this.state.audioLength;
+        }
+    }
+
     displayArtists = (artists) => {
         return artists.map(artist => artist.name).join(", ");
     }
 
+    switchSong = () => {
+        this.audio.current.src = this.props.song_data.audio_url;
+        this.play();
+    }
+
     play = (event) => {
-        event.stopPropagation();
+        if (event) event.stopPropagation();
+
         this.setState({ isPlaying: true });
+        this.audio.current.play();
+        this.audio.current.addEventListener('timeupdate', (timeUpdateEvent) => {
+            this.setState({
+                audioLength: timeUpdateEvent.target.duration,
+                audioCurrentTime: timeUpdateEvent.target.currentTime
+            })
+            this.normaliseProgress();
+        });
     }
 
     pause = (event) => {
         event.stopPropagation();
         this.setState({ isPlaying: false });
+        this.audio.current.pause();
+    }
+
+    updateCurrentTime = (value) => {
+        const duration = this.state.audioLength;
+
+        if (value < duration) {
+            this.setState({ audioCurrentTime: value })
+            this.audio.current.currentTime = value;
+        } else {
+            this.setState({ audioCurrentTime: duration })
+            this.audio.current.currentTime = duration;
+        }
     }
 
     like = (event) => {
@@ -63,11 +110,14 @@ class AudioController extends Component {
 
     render() {
         const { song_data } = this.props;
-        const { completed, openViewer, isPlaying } = this.state;
+        const { openViewer, isPlaying } = this.state;
 
         return <div className="audio-controller-wrapper">
             <div className="mobile" onClick={() => this.openViewer()}>
-                <AudioProgress variant="determinate" value={completed} />
+                <AudioProgress
+                    variant="determinate"
+                    value={this.normaliseProgress()}
+                />
                 <div className="actions">
                     {
                         isPlaying
@@ -95,8 +145,14 @@ class AudioController extends Component {
                 closeViewer={this.closeViewer}
                 song_data={song_data}
                 isPlaying={isPlaying}
+                current={isNaN(this.state.audioCurrentTime) ? 0 : Math.round(this.state.audioCurrentTime)}
+                duration={isNaN(this.state.audioLength) ? 100 : Math.round(this.state.audioLength)}
+                updateCurrentTime={this.updateCurrentTime}
                 play={this.play}
                 pause={this.pause} />
+            <audio
+                src={song_data.audio_url} ref={this.audio}
+            ></audio>
         </div>
     }
 }
