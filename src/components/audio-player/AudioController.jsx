@@ -78,6 +78,7 @@ class AudioController extends Component {
     }
 
     switchSong = () => {
+        this.setState({ audioCurrentTime: 0 })
         this.audio.current.src = this.props.song_data.audio_url;
         this.play();
     }
@@ -85,7 +86,6 @@ class AudioController extends Component {
     play = (event) => {
         if (event) event.stopPropagation();
 
-        this.setState({ isPlaying: true });
         this.audio.current.play();
         this.audio.current.addEventListener('timeupdate', (timeUpdateEvent) => {
             this.setState({
@@ -95,8 +95,9 @@ class AudioController extends Component {
             this.normaliseProgress();
         });
 
-        this.audio.current.addEventListener('pause', () => { this.setState({ isPlaying: false }) })
-        this.audio.current.addEventListener('ended', () => { this.setState({ isPlaying: false }) })
+        this.audio.current.addEventListener('play', () => this.setState({ isPlaying: true }))
+        this.audio.current.addEventListener('pause', () => this.setState({ isPlaying: false }))
+        this.audio.current.addEventListener('ended', () => this.setState({ isPlaying: false }))
     }
 
     pause = (event) => {

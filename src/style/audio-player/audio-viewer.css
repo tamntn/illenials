@@ -29,7 +29,7 @@
 
 .audio-viewer .main .artwork {
     width: 100%;
-    height: calc(100vw - 80px);
+    height: calc(100vw - 72px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,8 +38,8 @@
 }
 
 .audio-viewer .main .artwork .full {
-    width: calc(100vw - 80px);
-    height: calc(100vw - 80px);
+    width: calc(100vw - 72px);
+    height: calc(100vw - 72px);
     border-radius: 8px;
     transition: all 0.25s;
 }
@@ -53,11 +53,11 @@
 
 .audio-viewer .main .slider {
     width: 100%;
-    padding: 4px 40px 0px 40px;
+    padding: 4px 36px 0px 36px;
 }
 
 .audio-viewer .main .time {
-    padding: 0px 40px;
+    padding: 0px 36px;
     color: #757575;
     font-size: 14px;
     font-weight: 500;
@@ -68,7 +68,7 @@
 }
 
 .audio-viewer .main .name {
-    padding: 12px 40px 0px 40px;
+    padding: 12px 36px 0px 36px;
     text-align: center;
     font-size: 22px;
     font-weight: 600;
@@ -79,7 +79,7 @@
 }
 
 .audio-viewer .main .artists {
-    padding: 0px 40px;
+    padding: 0px 36px;
     text-align: center;
     font-size: 20px;
     white-space: nowrap;
@@ -88,7 +88,7 @@
 }
 
 .audio-viewer .main .actions {
-    padding: 32px 40px;
+    padding: 32px 36px;
     display: flex;
     flex-direction: row;
     align-items: center;

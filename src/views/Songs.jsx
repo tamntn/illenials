@@ -67,6 +67,20 @@ class AudioPlayer extends Component {
         return songs_by_year;
     }
 
+    onSearch = (event) => {
+        const search_text = event.target.value;
+        this.setState({ search_text })
+        const search_songs = this.state.all_songs.filter(song => {
+            const song_data = song.data;
+            if (song_data.name.toLowerCase().includes(search_text)) {
+                return true
+            } else {
+                return false
+            }
+        })
+        this.setState({ all_songs_by_year: this.generateSongsByYearList(search_songs) })
+    }
+
     switchView = (view_option) => {
         this.setState({ view_option });
     }
@@ -96,7 +110,7 @@ class AudioPlayer extends Component {
                                 id="outlined-name"
                                 placeholder="Search"
                                 value={search_text}
-                                onChange={(event) => this.setState({ search_text: event.target.value })}
+                                onChange={this.onSearch}
                                 margin="dense"
                                 variant="outlined"
                                 fullWidth
