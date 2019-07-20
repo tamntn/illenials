@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import posed from 'react-pose';
 import { LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +7,19 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faPlay, faPause, faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import AudioViewer from './AudioViewer';
 import '../../style/audio-player/audio-controller.css';
+
+const AudioControllerWrapper = posed.div({
+    visible: {
+        opacity: 1,
+        transition: { duration: 300, ease: 'easeIn' },
+        y: 0,
+    },
+    hidden: {
+        opacity: 0.7,
+        transition: { duration: 300, ease: 'easeIn' },
+        y: 56,
+    }
+})
 
 const AudioProgress = withStyles({
     root: {
@@ -80,6 +94,9 @@ class AudioController extends Component {
             })
             this.normaliseProgress();
         });
+
+        this.audio.current.addEventListener('pause', () => { this.setState({ isPlaying: false }) })
+        this.audio.current.addEventListener('ended', () => { this.setState({ isPlaying: false }) })
     }
 
     pause = (event) => {
@@ -112,7 +129,7 @@ class AudioController extends Component {
         const { song_data } = this.props;
         const { openViewer, isPlaying } = this.state;
 
-        return <div className="audio-controller-wrapper">
+        return <AudioControllerWrapper className="audio-controller-wrapper" initialPose="hidden" pose="visible">
             <div className="mobile" onClick={() => this.openViewer()}>
                 <AudioProgress
                     variant="determinate"
@@ -153,7 +170,7 @@ class AudioController extends Component {
             <audio
                 src={song_data.audio_url} ref={this.audio}
             ></audio>
-        </div>
+        </AudioControllerWrapper>
     }
 }
 
