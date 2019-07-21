@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -36,11 +37,21 @@ class SignIn extends Component {
 
     render() {
         const firebaseApp = this.context;
+        const { isSignedIn } = this.props;
+
+        if (isSignedIn) {
+            this.props.openMessage("You've already signed in. Welcome back!")
+            return <Redirect to="/songs" />
+        }
 
         return <div className="sign-in">
-            <StyledFirebaseAuth
-                uiConfig={this.firebaseUiConfig}
-                firebaseAuth={firebaseApp.auth()} />
+            {
+                isSignedIn !== undefined && !isSignedIn
+                &&
+                <StyledFirebaseAuth
+                    uiConfig={this.firebaseUiConfig}
+                    firebaseAuth={firebaseApp.auth()} />
+            }
         </div>
     }
 }

@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import moment from 'moment';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { FirebaseContext, firebaseApp } from './firebase';
+import { createMuiTheme, withStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { Snackbar, SnackbarContent } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import Home from './views/Home';
 import SignIn from './views/SignIn.jsx';
 import Songs from './views/Songs';
@@ -11,6 +14,25 @@ import NotFound404 from './views/NotFound404';
 
 ReactGA.initialize('UA-143098154-1');
 ReactGA.pageview('/');
+
+const AppMessage = withStyles({
+	root: {
+		backgroundColor: 'rgba(0, 0, 0, 0.95)',
+		border: '1px solid #f6e3b2'
+	},
+	message: {
+		color: 'white',
+		fontFamily: "'Rajdhani', sans-serif",
+		fontSize: '17px',
+		fontWeight: '500'
+	}
+})(SnackbarContent);
+
+const CloseMessageIcon = withStyles({
+	root: {
+		color: '#f6e3b2'
+	}
+})(CloseIcon)
 
 const theme = createMuiTheme({
 	palette: {
@@ -42,7 +64,9 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isSignedIn: undefined
+			isSignedIn: undefined,
+			viewMessage: false,
+			message: ""
 		}
 	}
 
@@ -56,8 +80,19 @@ class App extends React.Component {
 		this.unregisterAuthObserver();
 	}
 
+	handleOpenMessage = (message) => {
+		this.setState({
+			viewMessage: true,
+			message
+		})
+	}
+
+	handleCloseMessage = () => {
+		this.setState({ viewMessage: false })
+	}
+
 	render() {
-		const { isSignedIn } = this.state;
+		const { isSignedIn, viewMessage, message } = this.state;
 
 		return (
 			<ThemeProvider theme={theme}>
@@ -66,12 +101,27 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path="/" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
 							<Route path="/home" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
-							<Route path="/signin" render={(props) => <SignIn {...props} isSignedIn={isSignedIn} />} />
+							<Route path="/signin" render={(props) => <SignIn {...props} isSignedIn={isSignedIn} openMessage={this.handleOpenMessage} />} />
 							<Route path="/songs" render={(props) => <Songs {...props} isSignedIn={isSignedIn} />} />
 							<Route component={NotFound404} />
 						</Switch>
 					</BrowserRouter>
 				</FirebaseContext.Provider>
+				<Snackbar
+					key={moment()}
+					anchorOrigin={{
+						vertical: 'top',
+						horizontal: 'center',
+					}}
+					open={viewMessage}
+					autoHideDuration={7000}
+					onClose={this.handleCloseMessage}
+				>
+					<AppMessage
+						message={message}
+						action={[<CloseMessageIcon />]}
+					/>
+				</Snackbar>
 			</ThemeProvider>
 		);
 	}

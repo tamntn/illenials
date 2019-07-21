@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { SwipeableDrawer, Drawer } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faPlay, faPause, faBackward, faForward, faRandom, faHeart as faHeartSolid, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faBackward, faForward, faRandom, faHeart as faHeartSolid, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faWindowMinimize } from '@fortawesome/free-regular-svg-icons';
 import * as Vibrant from 'node-vibrant';
 import animateScrollTo from 'animated-scroll-to';
