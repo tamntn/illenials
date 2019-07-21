@@ -42,18 +42,32 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			isSignedIn: undefined
 		}
 	}
 
+	componentDidMount() {
+		this.unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged((user) => {
+			this.setState({ isSignedIn: !!user });
+		});
+	}
+
+	componentWillUnmount() {
+		this.unregisterAuthObserver();
+	}
+
 	render() {
+		const { isSignedIn } = this.state;
+
 		return (
 			<ThemeProvider theme={theme}>
 				<FirebaseContext.Provider value={firebaseApp}>
 					<BrowserRouter>
 						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route path="/signin" component={SignIn} />
-							<Route path="/audio" component={Songs} />
+							<Route exact path="/" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
+							<Route path="/home" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
+							<Route path="/signin" render={(props) => <SignIn {...props} isSignedIn={isSignedIn} />} />
+							<Route path="/songs" render={(props) => <Songs {...props} isSignedIn={isSignedIn} />} />
 							<Route component={NotFound404} />
 						</Switch>
 					</BrowserRouter>

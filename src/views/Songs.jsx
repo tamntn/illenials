@@ -28,12 +28,6 @@ class AudioPlayer extends Component {
         this.fetchSongs();
     }
 
-    // testSignIn = () => {
-    //     const firebaseApp = this.context;
-    //     const phoneNumber = '+16015559999';
-    //     const appVerifier = new firebaseApp.auth.RecaptchaVerifier('')
-    // }
-
     fetchSongs = () => {
         const firebaseApp = this.context;
         const db = firebaseApp.firestore();

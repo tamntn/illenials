@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
-import posed from 'react-pose';
-import { withStyles } from '@material-ui/styles';
-import { CloseRounded } from '@material-ui/icons';
+import { Link, withRouter } from 'react-router-dom';
+import { FirebaseContext } from '../firebase';
+import posed, { PoseGroup } from 'react-pose';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faList, faTh, faHome } from '@fortawesome/free-solid-svg-icons';
 import '../style/fullscreen-menu.css';
-
-const styles = {
-    closeIcon: {
-        fontSize: 38,
-        position: 'absolute',
-        top: '24px',
-        right: '24px',
-        '&:hover': {
-            cursor: 'pointer',
-        },
-    }
-};
 
 const FullscreenMenuWrapper = posed.div({
     visible: {
         opacity: 1,
-        transition: { duration: 300, ease: 'easeIn' }
+        transition: { duration: 300, ease: 'easeIn', delay: 350 }
     },
     hidden: {
         opacity: 0,
@@ -30,7 +20,7 @@ const FullscreenMenuWrapper = posed.div({
 const FullscreenMenuLeft = posed.div({
     visible: {
         opacity: 1,
-        transition: { duration: 500, ease: 'easeIn' }
+        transition: { duration: 500, ease: 'easeIn', delay: 350 }
     },
     hidden: {
         opacity: 0,
@@ -67,13 +57,15 @@ class FullscreenMenu extends Component {
 
     closeMenu = () => {
         this.setState({ closing: true })
-        setTimeout(() => {
-            this.props.close();
-        }, 300);
+    }
+
+    signOut = () => {
+        const firebaseApp = this.context;
+        firebaseApp.auth().signOut();
     }
 
     render() {
-        const { classes } = this.props;
+        const { isSignedIn, classes } = this.props;
 
         return (
             <FullscreenMenuWrapper className="fullscreen-menu-wrapper" pose={this.state.closing ? 'hidden' : 'visible'}>
@@ -83,17 +75,35 @@ class FullscreenMenu extends Component {
                     </video>
                 </FullscreenMenuLeft>
                 <FullscreenMenuRight className="menu-right" initialPose="hidden" pose="visible">
-                    <MenuItem>Home</MenuItem>
-                    <MenuItem>Bracket</MenuItem>
-                    <MenuItem>Credits</MenuItem>
+                    <FontAwesomeIcon icon={faChevronUp} className="action" onClick={() => this.props.goToPage(0)} />
+                    <PoseGroup>
+                        {
+                            !isSignedIn
+                            &&
+                            <MenuItem key={1}><Link to="/signin">Sign In</Link></MenuItem>
+                        }
+                        <MenuItem key={2}><Link to="/home" onClick={() => this.props.goToPage(0)} >Home</Link></MenuItem>
+                        <MenuItem key={3}><Link to="/songs">Tournament</Link></MenuItem>
+                        <MenuItem key={4}><Link to="/about">About</Link></MenuItem>
+                        <MenuItem key={5}><Link to="/credits">Credits</Link></MenuItem>
+                        {
+                            isSignedIn
+                            &&
+                            <MenuItem key={6}><Link to="/profile">My Profile</Link></MenuItem>
+                        }
+                        {
+                            isSignedIn
+                            &&
+                            <MenuItem key={7} onClick={this.signOut}>Sign Out</MenuItem>
+                        }
+                    </PoseGroup>
+                    <div className="menu-footer">made by 👨🏻‍💻 with ☕️ & 🧡</div>
                 </FullscreenMenuRight>
-                <CloseRounded
-                    color="primary"
-                    className={classes.closeIcon}
-                    onClick={this.closeMenu} />
             </FullscreenMenuWrapper>
         )
     }
 }
 
-export default withStyles(styles)(FullscreenMenu);
+FullscreenMenu.contextType = FirebaseContext;
+
+export default withRouter(FullscreenMenu);

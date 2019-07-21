@@ -15,7 +15,7 @@ class SignIn extends Component {
         }
         this.firebaseUiConfig = {
             signInFlow: 'popup',
-            signInSuccessUrl: '/audio',
+            signInSuccessUrl: '/songs',
             signInOptions: [
                 {
                     provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
@@ -30,17 +30,14 @@ class SignIn extends Component {
                 {
                     provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID
                 }
-            ],
-            // callbacks: {
-            //     signInSuccessWithAuthResult: (result) => console.log(result)
-            // },
+            ]
         };
     }
 
     render() {
         const firebaseApp = this.context;
 
-        return <div className="sign-in" style={{ height: window.innerHeight }}>
+        return <div className="sign-in">
             <StyledFirebaseAuth
                 uiConfig={this.firebaseUiConfig}
                 firebaseAuth={firebaseApp.auth()} />

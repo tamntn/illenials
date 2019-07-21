@@ -44,6 +44,7 @@
     font-weight: 600;
     margin: 12px 0px;
     transition: all 0.25s ease;
+    user-select: none;
 }
 
 .menu-right li:hover {
@@ -53,14 +54,30 @@
     transition: all 0.25s ease;
 }
 
-.fullscreen-menu-close-button {
-    font-size: 38px;
-    position: absolute;
-    top: 24px;
-    right: 24px;
+.menu-right a {
+    color: #f6e3b2;
+    text-decoration: none;
 }
 
-@media screen and (max-width: 768px) {
+.menu-right .action {
+    font-size: 23px;
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    transform: translate(50%, 0);
+}
+
+.menu-right .action:hover {
+    cursor: pointer;
+}
+
+.menu-right .menu-footer {
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+}
+
+@media screen and (max-width: 959px) {
     .fullscreen-menu-wrapper {
         display: inherit;
     }
@@ -81,7 +98,17 @@
         justify-content: center;
         padding-left: 0px;
     }
+    .menu-right li {
+        font-size: 32px;
+        margin: 8px 0px;
+    }
     .menu-right li:hover {
         transform: translate(0px, 0px);
+    }
+    .menu-right .action {
+        font-size: 20px;
+    }
+    .menu-right .menu-footer {
+        font-size: 13px;
     }
 }

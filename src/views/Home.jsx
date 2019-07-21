@@ -52,7 +52,10 @@ class Home extends Component {
                 pageOnChange={this.onPageChange}
             >
                 <CountdownPage goToPage={this.goToPage} />
-                <WelcomePage showMenu={this.state.showMenu} goToPage={this.goToPage} />
+                <WelcomePage
+                    isSignedIn={this.props.isSignedIn}
+                    showMenu={this.state.showMenu}
+                    goToPage={this.goToPage} />
             </ReactPageScroller>
         </div>
     }
