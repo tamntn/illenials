@@ -3,7 +3,7 @@ import { FirebaseContext } from '../firebase';
 import { Grid, TextField, InputAdornment } from '@material-ui/core';
 import { SearchOutlined } from '@material-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle, faList, faTh, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle, faList, faTh, faHome } from '@fortawesome/free-solid-svg-icons';
 import { viewOptions } from '../utils/view-options.js';
 import SongListFull from '../components/song-list/SongListFull';
 import SongListSquare from '../components/song-list/SongListSquare';
@@ -136,7 +136,7 @@ class AudioPlayer extends Component {
                                 className={`action-icon ${this.state.view_option === viewOptions.square ? "action-icon-selected" : null}`}
                                 onClick={() => this.switchView(viewOptions.square)}
                             />
-                            <FontAwesomeIcon icon={faBars}
+                            <FontAwesomeIcon icon={faHome}
                                 className={`menu-icon`}
                                 onClick={() => { }}
                             />

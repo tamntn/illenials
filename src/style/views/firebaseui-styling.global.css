@@ -111,11 +111,6 @@
     background-color: transparent !important;
 }
 
-/* .mdl-textfield.is-focused .mdl-textfield__label:after {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-} */
-
 input.firebaseui-input {
     background-color: #212121;
     height: 31px;
@@ -177,6 +172,8 @@ input.firebaseui-input::placeholder {
     line-height: 18px;
 }
 
+/* Progress Bar */
+
 .mdl-progress {
     position: fixed !important;
     top: 0 !important;
@@ -185,8 +182,10 @@ input.firebaseui-input::placeholder {
 }
 
 .mdl-progress .bar1 {
-    background-color: #e65100 !important;
+    background-color: #f6e3b2 !important;
 }
+
+/* Submit code confirmation text */
 
 .firebaseui-resend-container .firebaseui-id-resend-countdown {
     color: #757575;
@@ -213,4 +212,9 @@ input.firebaseui-input::placeholder {
     background-color: black !important;
     color: white !important;
     border: 1px solid #f6e3b2 !important;
+    border-radius: 8px;
+}
+
+.firebaseui-list-box-dialog .firebaseui-list-box-actions .firebaseui-list-box-dialog-button .firebaseui-list-box-label-wrapper {
+    color: white;
 }
