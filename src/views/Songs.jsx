@@ -28,9 +28,15 @@ class AudioPlayer extends Component {
         this.fetchSongs();
     }
 
+    // testSignIn = () => {
+    //     const firebaseApp = this.context;
+    //     const phoneNumber = '+16015559999';
+    //     const appVerifier = new firebaseApp.auth.RecaptchaVerifier('')
+    // }
+
     fetchSongs = () => {
-        const firebase = this.context;
-        const db = firebase.firestore();
+        const firebaseApp = this.context;
+        const db = firebaseApp.firestore();
         const songsRef = db.collection('songs');
 
         songsRef.orderBy("release_date", "desc").get().then(querySnapshots => {
@@ -72,7 +78,7 @@ class AudioPlayer extends Component {
         this.setState({ search_text })
         const search_songs = this.state.all_songs.filter(song => {
             const song_data = song.data;
-            if (song_data.name.toLowerCase().includes(search_text)) {
+            if (song_data.name.toLowerCase().includes(search_text.toLowerCase())) {
                 return true
             } else {
                 return false

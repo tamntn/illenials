@@ -5,6 +5,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { FirebaseContext, firebaseApp } from './firebase';
 import Home from './views/Home';
+import SignIn from './views/SignIn.jsx';
 import Songs from './views/Songs';
 import NotFound404 from './views/NotFound404';
 
@@ -51,7 +52,8 @@ class App extends React.Component {
 					<BrowserRouter>
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route exact path="/audio" component={Songs} />
+							<Route path="/signin" component={SignIn} />
+							<Route path="/audio" component={Songs} />
 							<Route component={NotFound404} />
 						</Switch>
 					</BrowserRouter>
