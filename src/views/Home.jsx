@@ -8,12 +8,17 @@ class Home extends Component {
         super(props);
         this.state = {
             scrollerHeight: window.innerHeight,
-            disableScrolling: false
+            disableScrolling: true,
+            showMenu: false
         }
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.onWindowResize)
+        window.addEventListener('resize', this.onWindowResize);
+
+        setTimeout(() => {
+            this.setState({ disableScrolling: false });
+        }, 2500)
     }
 
     componentWillUnmount() {
@@ -32,6 +37,10 @@ class Home extends Component {
         this.reactPageScroller.goToPage(pageNumber);
     }
 
+    onPageChange = (currentPage) => {
+        if (currentPage === 2) this.setState({ showMenu: true })
+    }
+
     render() {
         return <div>
             <ReactPageScroller
@@ -40,9 +49,10 @@ class Home extends Component {
                 containerHeight={this.state.scrollerHeight}
                 blockScrollUp={this.state.disableScrolling ? true : false}
                 blockScrollDown={this.state.disableScrolling ? true : false}
+                pageOnChange={this.onPageChange}
             >
                 <CountdownPage goToPage={this.goToPage} />
-                <WelcomePage disableScrolling={this.disableScrolling} />
+                <WelcomePage showMenu={this.state.showMenu} goToPage={this.goToPage} />
             </ReactPageScroller>
         </div>
     }
