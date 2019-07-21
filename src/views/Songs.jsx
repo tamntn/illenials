@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { FirebaseContext } from '../firebase';
 import { Grid, TextField, InputAdornment } from '@material-ui/core';
 import { SearchOutlined } from '@material-ui/icons';
@@ -99,6 +100,14 @@ class AudioPlayer extends Component {
 
     render() {
         const { search_text, view_option, playing_song } = this.state;
+        const { isSignedIn } = this.props;
+
+        if (isSignedIn === undefined) return null;
+
+        if (isSignedIn === false) {
+            this.props.openMessage("You must sign in before entering to vote.")
+            return <Redirect to="/signin" />
+        }
 
         return <React.Fragment>
             <Grid container spacing={0}>

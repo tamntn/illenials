@@ -1,8 +1,47 @@
 .sign-in {
-    padding-top: 156px;
-    /* width: 100vw;
+    padding-top: 24px;
+    width: 100vw;
+}
+
+.sign-in .title {
+    margin-bottom: 48px;
+    color: #f6e3b2;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    user-select: none;
+}
+
+.sign-in .description {
+    margin: 24px 24px 0px 24px;
+    color: #757575;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; */
+    user-select: none;
+}
+
+.sign-in .description div {
+    width: 100%;
+    max-width: 552px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.sign-in .description div:first-child {
+    border-top: 1px solid #212121;
+    padding-top: 12px;
+}
+
+@media screen and (max-width: 599px) {
+    .sign-in .title {
+        margin-bottom: 32px;
+        font-size: 28px;
+    }
+    .sign-in .description {
+        margin: 8px 24px 0px 24px;
+    }
 }

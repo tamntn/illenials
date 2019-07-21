@@ -81,14 +81,11 @@ class App extends React.Component {
 	}
 
 	handleOpenMessage = (message) => {
-		this.setState({
-			viewMessage: true,
-			message
-		})
+		this.setState({ viewMessage: true, message })
 	}
 
 	handleCloseMessage = () => {
-		this.setState({ viewMessage: false })
+		this.setState({ viewMessage: false, message: "" })
 	}
 
 	render() {
@@ -102,7 +99,7 @@ class App extends React.Component {
 							<Route exact path="/" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
 							<Route path="/home" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
 							<Route path="/signin" render={(props) => <SignIn {...props} isSignedIn={isSignedIn} openMessage={this.handleOpenMessage} />} />
-							<Route path="/songs" render={(props) => <Songs {...props} isSignedIn={isSignedIn} />} />
+							<Route path="/songs" render={(props) => <Songs {...props} isSignedIn={isSignedIn} openMessage={this.handleOpenMessage} />} />
 							<Route component={NotFound404} />
 						</Switch>
 					</BrowserRouter>
@@ -114,7 +111,7 @@ class App extends React.Component {
 						horizontal: 'center',
 					}}
 					open={viewMessage}
-					autoHideDuration={7000}
+					autoHideDuration={8000}
 					onClose={this.handleCloseMessage}
 				>
 					<AppMessage

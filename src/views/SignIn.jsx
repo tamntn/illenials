@@ -40,7 +40,7 @@ class SignIn extends Component {
         const { isSignedIn } = this.props;
 
         if (isSignedIn) {
-            this.props.openMessage("You've already signed in. Welcome back!")
+            this.props.openMessage("You are now signed in. Happy votings!")
             return <Redirect to="/songs" />
         }
 
@@ -48,9 +48,17 @@ class SignIn extends Component {
             {
                 isSignedIn !== undefined && !isSignedIn
                 &&
-                <StyledFirebaseAuth
-                    uiConfig={this.firebaseUiConfig}
-                    firebaseAuth={firebaseApp.auth()} />
+                <React.Fragment>
+                    <div className="title">SIGN IN</div>
+                    <StyledFirebaseAuth
+                        uiConfig={this.firebaseUiConfig}
+                        firebaseAuth={firebaseApp.auth()} />
+                    <div className="description">
+                        <div>¹ Account signin is required in order to keep track of everyone's voting and make sure that each vote is unique.</div>
+                        <div>² Your data is completely secured as authentication is done via Google Firebase. This website has no access to any of your data besides phone number (if you sign up with phone), and any other data you have already made public on your Facebook/Google account.</div>
+                        <div>³ This website will only send you text messages in order to notify you of when the bracket starts or the voting results.</div>
+                    </div>
+                </React.Fragment>
             }
         </div>
     }
