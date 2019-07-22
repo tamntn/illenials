@@ -4,7 +4,7 @@
 }
 
 .credits .title {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     color: #f6e3b2;
     text-align: center;
     font-size: 30px;
@@ -29,11 +29,20 @@
     max-width: 600px;
     width: 100%;
     color: #757575;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .credits .credits-box-wrapper .credits-box {
     color: #757575;
+}
+
+.credits .credits-box-wrapper .credits-box a {
+    color: #757575;
+    transition: all 0.25s;
+}
+
+.credits .credits-box-wrapper .credits-box a:hover {
+    color: white;
 }
 
 .credits .credits-box-wrapper .credits-box div {

@@ -171,10 +171,10 @@ class AudioViewer extends Component {
                 <div
                     className="lyrics"
                     ref={this.lyrics}
-                    style={{ height: `${window.innerHeight}px` }}
-                    onClick={this.scrollToLyrics}
+                    // style={{ height: `${window.innerHeight}px` }}
+                    // onClick={this.scrollToLyrics}
                 >
-                    <FontAwesomeIcon icon={faArrowDown} className="lyrics-icon" /> Show Lyrics
+                    <FontAwesomeIcon icon={faArrowDown} className="lyrics-icon" /> View lyrics available soon
                 </div>
             </div>
         </div>

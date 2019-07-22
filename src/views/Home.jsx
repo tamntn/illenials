@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
 import ReactPageScroller from "react-page-scroller";
 import CountdownPage from '../components/CountdownPage';
 import WelcomePage from '../components/WelcomePage';
-
-ReactGA.pageview('/home');
 
 class Home extends Component {
     constructor(props) {

@@ -88,7 +88,7 @@ class FullscreenMenu extends Component {
                         {
                             isSignedIn
                             &&
-                            <MenuItem key={5}><Link to="/profile">User Profile</Link></MenuItem>
+                            <MenuItem key={5}><Link to="/profile">Illenial Profile</Link></MenuItem>
                         }
                         {
                             isSignedIn

@@ -14,7 +14,7 @@ import Credits from './views/Credits.jsx';
 import NotFound404 from './views/NotFound404';
 
 ReactGA.initialize('UA-143098154-1');
-ReactGA.pageview('/');
+ReactGA.pageview(window.location.pathname);
 
 const AppMessage = withStyles({
 	root: {
@@ -112,9 +112,9 @@ class App extends React.Component {
 						vertical: 'top',
 						horizontal: 'center',
 					}}
-					TransitionComponent={(props) => <Slide {...props} direction="down" /> }
+					TransitionComponent={(props) => <Slide {...props} direction="down" />}
 					open={viewMessage}
-					autoHideDuration={10000}
+					autoHideDuration={5000}
 					onClose={this.handleCloseMessage}
 				>
 					<AppMessage

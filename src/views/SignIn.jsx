@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
 import { Redirect } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -8,8 +7,6 @@ import { FirebaseContext } from '../firebase';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import '../style/views/sign-in.css';
 import '../style/views/firebaseui-styling.global.css';
-
-ReactGA.pageview('/signin');
 
 class SignIn extends Component {
     constructor(props) {
@@ -43,7 +40,6 @@ class SignIn extends Component {
         const { isSignedIn } = this.props;
 
         if (isSignedIn) {
-            this.props.openMessage("Hi! Like songs to vote. View rankings with Leaderboard. The top 16 songs will be qualified for the first tournament round 🎉")
             return <Redirect to="/songs" />
         }
 

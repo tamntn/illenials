@@ -1,24 +1,44 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { FirebaseContext } from '../firebase';
-import { Grid, TextField, InputAdornment } from '@material-ui/core';
-import { SearchOutlined } from '@material-ui/icons';
+import { Grid, TextField, InputAdornment, Snackbar, SnackbarContent, Slide } from '@material-ui/core';
+import { SearchOutlined, Close as CloseIcon } from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle, faList, faTh, faHome } from '@fortawesome/free-solid-svg-icons';
 import { viewOptions } from '../utils/view-options.js';
+import phoenixGif from '../images/phoenix.gif';
 import SongListFull from '../components/song-list/SongListFull';
 import SongListSquare from '../components/song-list/SongListSquare';
 import AudioController from '../components/audio-player/AudioController';
 import Leaderboard from '../components/song-vote/Leaderboard';
 import '../style/views/songs.css';
 
-ReactGA.pageview('/songs');
+const AppMessage = withStyles({
+    root: {
+        backgroundColor: 'rgba(0, 0, 0, 0.95)',
+        border: '1px solid #f6e3b2',
+        maxWidth: '550px'
+    },
+    message: {
+        color: 'white',
+        fontFamily: "'Rajdhani', sans-serif",
+        fontSize: '17px',
+        fontWeight: '500'
+    }
+})(SnackbarContent);
+
+const CloseMessageIcon = withStyles({
+    root: {
+        color: '#f6e3b2'
+    }
+})(CloseIcon)
 
 class AudioPlayer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            viewMessage: true,
             search_text: "",
             all_songs: "",
             all_songs_by_year: [],
@@ -43,10 +63,12 @@ class AudioPlayer extends Component {
                 id: doc.id,
                 data: doc.data()
             }));
-            this.setState({
-                all_songs: songs,
-                all_songs_by_year: this.generateSongsByYearList(songs)
-            })
+            setTimeout(() => {
+                this.setState({
+                    all_songs: songs,
+                    all_songs_by_year: this.generateSongsByYearList(songs)
+                })
+            }, 750)
         })
     }
 
@@ -69,6 +91,26 @@ class AudioPlayer extends Component {
             }
         })
         return songs_by_year;
+    }
+
+    handleOpenMessage = () => {
+        this.setState({ viewMessage: true })
+    }
+
+    handleCloseMessage = () => {
+        this.setState({ viewMessage: false })
+    }
+
+    getUserDisplayIdentity = () => {
+        const firebaseApp = this.context;
+        const { currentUser } = firebaseApp.auth()
+        const name = currentUser.displayName;
+        const email = currentUser.email;
+        const phone = currentUser.phoneNumber;
+
+        if (name) return name;
+        else if (email) return email;
+        else return phone;
     }
 
     onSearch = (event) => {
@@ -102,7 +144,7 @@ class AudioPlayer extends Component {
     }
 
     render() {
-        const { search_text, view_option, playing_song } = this.state;
+        const { viewMessage, search_text, view_option, playing_song } = this.state;
         const { isSignedIn } = this.props;
 
         if (isSignedIn === undefined) return null;
@@ -110,6 +152,13 @@ class AudioPlayer extends Component {
         if (isSignedIn === false) {
             this.props.openMessage("You must sign in before entering to vote.")
             return <Redirect to="/signin" />
+        }
+
+        if (this.state.all_songs_by_year.length === 0) {
+            return <div className="songs-loader">
+                <img src={phoenixGif} />
+                <div>ascending...</div>
+            </div>
         }
 
         return <React.Fragment>
@@ -132,7 +181,7 @@ class AudioPlayer extends Component {
                             />
                             <FontAwesomeIcon icon={faQuestionCircle}
                                 className={`question-icon`}
-                                onClick={() => { }}
+                                onClick={this.handleOpenMessage}
                             />
                             <FontAwesomeIcon icon={faList}
                                 className={`action-icon ${this.state.view_option === viewOptions.full ? "action-icon-selected" : null}`}
@@ -144,7 +193,7 @@ class AudioPlayer extends Component {
                             />
                             <FontAwesomeIcon icon={faHome}
                                 className={`menu-icon`}
-                                onClick={() => { }}
+                                onClick={() => { this.props.history.push('/home') }}
                             />
                         </div>
                         {
@@ -177,6 +226,20 @@ class AudioPlayer extends Component {
             <Leaderboard
                 open={this.state.openLeaderboard}
                 closeLeaderboard={this.closeLeaderboard} />
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                }}
+                open={viewMessage}
+                autoHideDuration={10000}
+                onClose={this.handleCloseMessage}
+            >
+                <AppMessage
+                    message={`Hi ${this.getUserDisplayIdentity()}!\nLike songs to vote. View rankings with Leaderboard. The top 16 songs will be picked into the first head-to-head round 🎉`}
+                    action={[<CloseMessageIcon onClick={this.handleCloseMessage} />]}
+                />
+            </Snackbar>
         </React.Fragment>
     }
 }
