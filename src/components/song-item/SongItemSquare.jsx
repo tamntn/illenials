@@ -15,10 +15,28 @@ const styles = {
 };
 
 class SongItemSquare extends Component {
-
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            liked: undefined
+        }
+    }
+
+    componentDidMount() {
+        const firebaseApp = this.context;
+        const uid = firebaseApp.auth().currentUser.uid;
+        const liked = this.props.song_data.likes.includes(uid);
+        this.setState({ liked })
+    }
+
+    like = () => {
+        this.setState({ liked: true });
+        this.props.likeSong(this.props.song_id);
+    }
+
+    unlike = () => {
+        this.setState({ liked: false });
+        this.props.unlikeSong(this.props.song_id);
     }
 
     render() {
@@ -61,14 +79,14 @@ class SongItemSquare extends Component {
                                 <FontAwesomeIcon icon={faSoundcloud} className="soundcloud-icon" />
                             </a>
                         </div>
-                        <div>
-                            {/* <span>30</span> */}
+                        <div className="likes">
+                            <span>{song_data.likes.length}</span>
                             {
-                                liked
+                                this.state.liked
                                     ?
-                                    <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" />
+                                    <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" onClick={this.unlike} />
                                     :
-                                    <FontAwesomeIcon icon={faHeart} className="heart" />
+                                    <FontAwesomeIcon icon={faHeart} className="heart" onClick={this.like} />
                             }
                         </div>
                     </div>

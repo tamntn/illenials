@@ -67,9 +67,18 @@
     cursor: pointer;
 }
 
+.song-item-square .actions .likes {
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .song-item-square .actions .heart {
     color: #757575;
-    font-size: 21px;
+    font-size: 20px;
+    margin-left: 8px;
 }
 
 .song-item-square .actions .heart:hover {
@@ -79,7 +88,8 @@
 
 .song-item-square .actions .heart-solid {
     color: #f44336;
-    font-size: 21px;
+    font-size: 20px;
+    margin-left: 8px;
 }
 
 .song-item-square .actions .heart-solid:hover {
