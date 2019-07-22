@@ -113,7 +113,7 @@
 }
 
 .audio-viewer .main .actions .shuffle-button, .like-button {
-    color: #757575;
+    color: #212121;
     font-size: 20px;
 }
 
@@ -121,7 +121,7 @@
     text-align: center;
     font-size: 14px;
     font-weight: 500;
-    color: #757575;
+    color: #212121;
 }
 
 .audio-viewer .main .lyrics .lyrics-icon {

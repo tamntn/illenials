@@ -4,8 +4,9 @@ import { LinearProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faPlay, faPause, faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faHeart as faHeartSolid, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import AudioViewer from './AudioViewer';
+import { FirebaseContext } from '../../firebase';
 import '../../style/audio-player/audio-controller.css';
 
 const AudioControllerWrapper = posed.div({
@@ -42,14 +43,19 @@ class AudioController extends Component {
             openViewer: false,
             isPlaying: true,
             audioLength: undefined,
-            audioCurrentTime: undefined
+            audioCurrentTime: undefined,
+            liked: undefined
         }
 
         this.audio = React.createRef();
     }
 
     componentDidMount() {
+        const firebaseApp = this.context;
+        const uid = firebaseApp.auth().currentUser.uid;
+        const liked = this.props.song_data.likes.includes(uid);
         this.play();
+        this.setState({ liked })
     }
 
     componentDidUpdate(prevProps) {
@@ -120,15 +126,19 @@ class AudioController extends Component {
 
     like = (event) => {
         event.stopPropagation();
+        this.setState({ liked: true });
+        this.props.likeSong(this.props.song_id);
     }
 
     unlike = (event) => {
         event.stopPropagation();
+        this.setState({ liked: false });
+        this.props.unlikeSong(this.props.song_id);
     }
 
     render() {
         const { song_data } = this.props;
-        const { openViewer, isPlaying } = this.state;
+        const { openViewer, isPlaying, liked } = this.state;
 
         return <AudioControllerWrapper className="audio-controller-wrapper" initialPose="hidden" pose="visible">
             <div className="mobile" onClick={() => this.openViewer()}>
@@ -152,9 +162,18 @@ class AudioController extends Component {
                         <div className="title">{song_data.name}</div>
                         <div className="artists">{this.displayArtists(song_data.artists)}</div>
                     </div>
-                    <FontAwesomeIcon
-                        onClick={this.like}
-                        icon={faHeart} className="heart-button" />
+                    {/* {
+                        liked
+                            ?
+                            <FontAwesomeIcon
+                                onClick={this.unlike}
+                                icon={faHeartSolid} className="heart-solid-button" />
+                            :
+                            <FontAwesomeIcon
+                                onClick={this.like}
+                                icon={faHeart} className="heart-button" />
+                    } */}
+                    <FontAwesomeIcon icon={faAngleUp} className="heart-button" />
                 </div>
             </div>
             <AudioViewer
@@ -174,5 +193,7 @@ class AudioController extends Component {
         </AudioControllerWrapper>
     }
 }
+
+AudioController.contextType = FirebaseContext;
 
 export default AudioController;

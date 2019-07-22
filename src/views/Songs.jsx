@@ -45,6 +45,7 @@ class AudioPlayer extends Component {
             all_songs: "",
             all_songs_by_year: [],
             playing_song: undefined,
+            playing_song_id: undefined,
             view_option: viewOptions.full,
             openLeaderboard: false
         }
@@ -145,8 +146,8 @@ class AudioPlayer extends Component {
         this.setState({ openLeaderboard: false })
     }
 
-    selectSong = (song) => {
-        this.setState({ playing_song: song });
+    selectSong = (songId, song) => {
+        this.setState({ playing_song_id: songId, playing_song: song });
     }
 
     likeSong = (songId) => {
@@ -176,7 +177,7 @@ class AudioPlayer extends Component {
     }
 
     render() {
-        const { viewMessage, search_text, view_option, playing_song } = this.state;
+        const { viewMessage, search_text, view_option, playing_song, playing_song_id } = this.state;
         const { isSignedIn } = this.props;
 
         if (isSignedIn === undefined) return null;
@@ -257,7 +258,12 @@ class AudioPlayer extends Component {
             {
                 playing_song
                 &&
-                <AudioController song_data={playing_song} />
+                <AudioController
+                    song_id={playing_song_id}
+                    song_data={playing_song}
+                    likeSong={this.likeSong}
+                    unlikeSong={this.unlikeSong}
+                />
             }
             <Leaderboard
                 open={this.state.openLeaderboard}

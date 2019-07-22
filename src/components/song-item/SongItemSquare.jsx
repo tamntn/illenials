@@ -40,7 +40,7 @@ class SongItemSquare extends Component {
     }
 
     render() {
-        const { song_data, classes } = this.props;
+        const { song_id, song_data, classes } = this.props;
         const isSpotify = song_data.spotify_uri;
         const firebaseApp = this.context;
         const uid = firebaseApp.auth().currentUser.uid;
@@ -50,12 +50,12 @@ class SongItemSquare extends Component {
             <Paper className={`song-item-square ${classes.paper}`}>
                 <img
                     src={isSpotify ? song_data.album.artwork_url : song_data.artwork_url}
-                    onClick={() => this.props.selectSong(song_data)}
+                    onClick={() => this.props.selectSong(song_id, song_data)}
                 />
                 <div>
                     <div className="info">
                         <div className="title"
-                            onClick={() => this.props.selectSong(song_data)}
+                            onClick={() => this.props.selectSong(song_id, song_data)}
                         >{song_data.name}</div>
                         <div className="artist">
                             {

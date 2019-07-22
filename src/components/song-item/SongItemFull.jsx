@@ -24,7 +24,7 @@ class SongItemFull extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            liked: false
+            liked: undefined
         }
     }
 
@@ -77,12 +77,12 @@ class SongItemFull extends Component {
     }
 
     render() {
-        const { song_data, classes } = this.props;
+        const { song_id, song_data, classes } = this.props;
         const isSpotify = song_data.spotify_uri;
         const isExplicit = song_data.explicit;
 
         return (
-            <Paper className={`song-item-full ${classes.paper}`} onClick={() => this.props.selectSong(song_data)}>
+            <Paper className={`song-item-full ${classes.paper}`} onClick={() => this.props.selectSong(song_id, song_data)}>
                 <img src={isSpotify ? song_data.album.artwork_url : song_data.artwork_url} />
                 <div className="song-item-full-right">
                     <div className="top">
