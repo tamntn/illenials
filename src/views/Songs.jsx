@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import { Redirect } from 'react-router-dom';
 import { FirebaseContext } from '../firebase';
 import { Grid, TextField, InputAdornment } from '@material-ui/core';
@@ -11,6 +12,8 @@ import SongListSquare from '../components/song-list/SongListSquare';
 import AudioController from '../components/audio-player/AudioController';
 import Leaderboard from '../components/song-vote/Leaderboard';
 import '../style/views/songs.css';
+
+ReactGA.pageview('/songs');
 
 class AudioPlayer extends Component {
     constructor(props) {

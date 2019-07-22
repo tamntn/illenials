@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import { Redirect } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -7,6 +8,8 @@ import { FirebaseContext } from '../firebase';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import '../style/views/sign-in.css';
 import '../style/views/firebaseui-styling.global.css';
+
+ReactGA.pageview('/signin');
 
 class SignIn extends Component {
     constructor(props) {

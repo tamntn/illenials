@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import '../style/views/not-found-404.css';
 
@@ -11,7 +12,11 @@ class NotFound404 extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.onWindowResize)
+        window.addEventListener('resize', this.onWindowResize);
+        ReactGA.event({
+            category: 'User',
+            action: 'Viewed a 404 Page'
+        })
     }
 
     componentWillUnmount() {

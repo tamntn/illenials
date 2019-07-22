@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import posed from 'react-pose';
 import '../style/views/credits.css';
+
+ReactGA.pageview('/credits');
 
 const CreditBoxWrapper = posed.ul({
     visible: {
