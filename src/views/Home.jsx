@@ -18,7 +18,7 @@ class Home extends Component {
 
         setTimeout(() => {
             this.setState({ disableScrolling: false });
-        }, 2500)
+        }, 1500)
     }
 
     componentWillUnmount() {

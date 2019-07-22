@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { FirebaseContext } from '../firebase';
 import posed, { PoseGroup } from 'react-pose';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faList, faTh, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp} from '@fortawesome/free-solid-svg-icons';
 import '../style/fullscreen-menu.css';
 
 const FullscreenMenuWrapper = posed.div({
@@ -77,24 +77,23 @@ class FullscreenMenu extends Component {
                 <FullscreenMenuRight className="menu-right" initialPose="hidden" pose="visible">
                     <FontAwesomeIcon icon={faChevronUp} className="action" onClick={() => this.props.goToPage(0)} />
                     <PoseGroup>
+                        <MenuItem key={1}><Link to="/home" onClick={() => this.props.goToPage(0)} >Home</Link></MenuItem>
+                        <MenuItem key={2}><Link to="/songs">Song Vote</Link></MenuItem>
+                        <MenuItem key={3}><Link to="/credits">Credits</Link></MenuItem>
                         {
                             !isSignedIn
                             &&
-                            <MenuItem key={1}><Link to="/signin">Sign In</Link></MenuItem>
-                        }
-                        <MenuItem key={2}><Link to="/home" onClick={() => this.props.goToPage(0)} >Home</Link></MenuItem>
-                        <MenuItem key={3}><Link to="/songs">Tournament</Link></MenuItem>
-                        <MenuItem key={4}><Link to="/about">About</Link></MenuItem>
-                        <MenuItem key={5}><Link to="/credits">Credits</Link></MenuItem>
-                        {
-                            isSignedIn
-                            &&
-                            <MenuItem key={6}><Link to="/profile">My Profile</Link></MenuItem>
+                            <MenuItem key={4}><Link to="/signin">Sign In</Link></MenuItem>
                         }
                         {
                             isSignedIn
                             &&
-                            <MenuItem key={7} onClick={this.signOut}>Sign Out</MenuItem>
+                            <MenuItem key={5}><Link to="/profile">User Profile</Link></MenuItem>
+                        }
+                        {
+                            isSignedIn
+                            &&
+                            <MenuItem key={6} onClick={this.signOut}>Sign Out</MenuItem>
                         }
                     </PoseGroup>
                     <div className="menu-footer">made by 👨🏻‍💻 with ☕️ & 🧡</div>

@@ -69,7 +69,7 @@ class CountdownPage extends Component {
 
         setTimeout(() => {
             this.setState({ loading: false });
-        }, 2500)
+        }, 1500)
     }
 
     componentWillUnmount() {
