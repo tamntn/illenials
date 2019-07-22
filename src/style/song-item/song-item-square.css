@@ -74,6 +74,7 @@
 
 .song-item-square .actions .heart:hover {
     cursor: pointer;
+    color: #f44336;
 }
 
 .song-item-square .actions .heart-solid {
@@ -81,7 +82,7 @@
     font-size: 21px;
 }
 
-.song-item-square .actions .heart-soid:hover {
+.song-item-square .actions .heart-solid:hover {
     cursor: pointer;
 }
 

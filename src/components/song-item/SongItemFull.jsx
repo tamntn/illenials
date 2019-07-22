@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { FirebaseContext } from '../../firebase';
 import '../../style/song-item/song-item-full.css';
 
 const styles = {
@@ -50,6 +51,9 @@ class SongItemFull extends Component {
         const { song_data, classes } = this.props;
         const isSpotify = song_data.spotify_uri;
         const isExplicit = song_data.explicit;
+        const firebaseApp = this.context;
+        const uid = firebaseApp.auth().currentUser.uid;
+        const liked = song_data.likes.includes(uid);
 
         return (
             <Paper className={`song-item-full ${classes.paper}`} onClick={() => this.props.selectSong(song_data)}>
@@ -90,8 +94,13 @@ class SongItemFull extends Component {
                         </div>
                         <div onClick={this.stopSelectSongPropagation}>
                             {/* <span>30</span> */}
-                            <FontAwesomeIcon icon={faHeart} className="heart" />
-                            {/* <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" /> */}
+                            {
+                                liked
+                                    ?
+                                    <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" />
+                                    :
+                                    <FontAwesomeIcon icon={faHeart} className="heart" />
+                            }
                         </div>
                     </div>
                 </div>
@@ -99,5 +108,7 @@ class SongItemFull extends Component {
         )
     }
 }
+
+SongItemFull.contextType = FirebaseContext;
 
 export default withStyles(styles)(SongItemFull);

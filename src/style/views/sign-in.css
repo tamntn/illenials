@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 599px) {
     .sign-in .title {
-        margin-bottom: 32px;
+        margin-bottom: 24px;
         font-size: 28px;
     }
     .sign-in .description {

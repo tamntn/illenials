@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { FirebaseContext } from '../../firebase';
 import '../../style/song-item/song-item-square.css';
 
 const styles = {
@@ -23,6 +24,9 @@ class SongItemSquare extends Component {
     render() {
         const { song_data, classes } = this.props;
         const isSpotify = song_data.spotify_uri;
+        const firebaseApp = this.context;
+        const uid = firebaseApp.auth().currentUser.uid;
+        const liked = song_data.likes.includes(uid);
 
         return (
             <Paper className={`song-item-square ${classes.paper}`}>
@@ -59,8 +63,13 @@ class SongItemSquare extends Component {
                         </div>
                         <div>
                             {/* <span>30</span> */}
-                            <FontAwesomeIcon icon={faHeart} className="heart" />
-                            {/* <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" /> */}
+                            {
+                                liked
+                                    ?
+                                    <FontAwesomeIcon icon={faHeartSolid} className="heart-solid" />
+                                    :
+                                    <FontAwesomeIcon icon={faHeart} className="heart" />
+                            }
                         </div>
                     </div>
                 </div>
@@ -68,5 +77,7 @@ class SongItemSquare extends Component {
         )
     }
 }
+
+SongItemSquare.contextType = FirebaseContext;
 
 export default withStyles(styles)(SongItemSquare);

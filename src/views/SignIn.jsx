@@ -55,7 +55,7 @@ class SignIn extends Component {
                     <div className="description">
                         <div>¹ Account signin is required in order to keep track of everyone's voting and make sure that each vote is unique.</div>
                         <div>² Your data is completely secured as authentication is done via Google Firebase. This website has no access to any of your data besides phone number (if you sign up with phone), and any other data you have already made publicly available on your Facebook/Google account.</div>
-                        <div>³ This website will only send you text messages in order to notify you of when the voting starts or the voting results.</div>
+                        <div>³ This website will only send you text messages in order to notify you of when the voting starts or the voting results. We might also send you Peanut's pics 🐶</div>
                     </div>
                 </React.Fragment>
             }

@@ -92,16 +92,17 @@
 
 .song-item-full .song-item-full-right .bottom .heart {
     color: #757575;
-    font-size: 22px;
+    font-size: 21px;
 }
 
 .song-item-full .song-item-full-right .bottom .heart:hover {
     cursor: pointer;
+    color: #f44336;
 }
 
 .song-item-full .song-item-full-right .bottom .heart-solid {
     color: #f44336;
-    font-size: 22px;
+    font-size: 21px;
 }
 
 .song-item-full .song-item-full-right .bottom .heart-soid:hover {

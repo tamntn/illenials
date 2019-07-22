@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import { FirebaseContext } from '../firebase';
 import { Grid, TextField, InputAdornment, Snackbar, SnackbarContent, Slide } from '@material-ui/core';
 import { SearchOutlined, Close as CloseIcon } from '@material-ui/icons';
@@ -52,12 +54,16 @@ class AudioPlayer extends Component {
         this.fetchSongs();
     }
 
+    componentWillUnmount() {
+        this.stopRealtimeListener();
+    }
+
     fetchSongs = () => {
         const firebaseApp = this.context;
         const db = firebaseApp.firestore();
         const songsRef = db.collection('songs');
 
-        songsRef.orderBy("release_date", "desc").get().then(querySnapshots => {
+        this.stopRealtimeListener = songsRef.orderBy("release_date", "desc").onSnapshot(querySnapshots => {
             let songs = [];
             querySnapshots.forEach(doc => songs.push({
                 id: doc.id,
@@ -143,9 +149,37 @@ class AudioPlayer extends Component {
         this.setState({ playing_song: song });
     }
 
+    likeSong = (songId) => {
+        const firebaseApp = this.context;
+        const db = firebaseApp.firestore();
+        const { currentUser } = firebaseApp.auth();
+        if (currentUser) {
+            const { uid } = currentUser;
+            let songsRef = db.collection('songs');
+            let songRef = songsRef.doc(songId).update({
+                "likes": firebase.firestore.FieldValue.arrayUnion(uid)
+            })
+        }
+    }
+
+    unlikeSong = (songId) => {
+        const firebaseApp = this.context;
+        const db = firebaseApp.firestore();
+        const { currentUser } = firebaseApp.auth();
+        if (currentUser) {
+            const { uid } = currentUser;
+            let songsRef = db.collection('songs');
+            let songRef = songsRef.doc(songId).update({
+                "likes": firebase.firestore.FieldValue.arrayRemove(uid)
+            })
+        }
+    }
+
     render() {
         const { viewMessage, search_text, view_option, playing_song } = this.state;
         const { isSignedIn } = this.props;
+
+        this.unlikeSong('7');
 
         if (isSignedIn === undefined) return null;
 

@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { FirebaseContext, firebaseApp } from './firebase';
 import { createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { Snackbar, SnackbarContent, Slide } from '@material-ui/core';
+import { Snackbar, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Home from './views/Home';
 import SignIn from './views/SignIn.jsx';
@@ -112,7 +112,6 @@ class App extends React.Component {
 						vertical: 'top',
 						horizontal: 'center',
 					}}
-					TransitionComponent={(props) => <Slide {...props} direction="down" />}
 					open={viewMessage}
 					autoHideDuration={5000}
 					onClose={this.handleCloseMessage}
