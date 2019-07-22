@@ -90,9 +90,18 @@
     cursor: pointer;
 }
 
+.song-item-full .song-item-full-right .bottom .likes {
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .song-item-full .song-item-full-right .bottom .heart {
     color: #757575;
     font-size: 21px;
+    margin-left: 8px;
 }
 
 .song-item-full .song-item-full-right .bottom .heart:hover {
@@ -103,6 +112,7 @@
 .song-item-full .song-item-full-right .bottom .heart-solid {
     color: #f44336;
     font-size: 21px;
+    margin-left: 8px;
 }
 
 .song-item-full .song-item-full-right .bottom .heart-soid:hover {
@@ -143,6 +153,9 @@
     }
     .song-item-full .song-item-full-right .bottom .soundcloud-icon {
         font-size: 20px;
+    }
+    .song-item-full .song-item-full-right .bottom .likes {
+        font-size: 16px;
     }
     .song-item-full .song-item-full-right .bottom .heart {
         font-size: 19px;

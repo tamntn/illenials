@@ -22,7 +22,13 @@ class SongListFull extends Component {
                         <StickyYearDivider year={year} number_of_releases={songs.length} openLeaderboard={this.props.openLeaderboard} />
                         {
                             songs.map(song => {
-                                return <SongItemFull key={song.id} song_data={song.data} selectSong={this.props.selectSong} />
+                                return <SongItemFull
+                                    key={song.id}
+                                    song_id={song.id}
+                                    song_data={song.data}
+                                    selectSong={this.props.selectSong}
+                                    likeSong={this.props.likeSong}
+                                    unlikeSong={this.props.unlikeSong} />
                             })
                         }
                         <div id={`year_${year}`}></div>

@@ -179,8 +179,6 @@ class AudioPlayer extends Component {
         const { viewMessage, search_text, view_option, playing_song } = this.state;
         const { isSignedIn } = this.props;
 
-        this.unlikeSong('7');
-
         if (isSignedIn === undefined) return null;
 
         if (isSignedIn === false) {
@@ -237,6 +235,8 @@ class AudioPlayer extends Component {
                                 songs_by_year={this.state.all_songs_by_year}
                                 openLeaderboard={this.openLeaderboard}
                                 selectSong={this.selectSong}
+                                likeSong={this.likeSong}
+                                unlikeSong={this.unlikeSong}
                             />
                         }
                         {
@@ -246,6 +246,8 @@ class AudioPlayer extends Component {
                                 songs_by_year={this.state.all_songs_by_year}
                                 openLeaderboard={this.openLeaderboard}
                                 selectSong={this.selectSong}
+                                likeSong={this.likeSong}
+                                unlikeSong={this.unlikeSong}
                             />
                         }
                     </div>
