@@ -26,7 +26,7 @@ const AudioViewerDrawer = withStyles(drawerStyles)(Drawer);
 
 const AudioSlider = withStyles({
     root: {
-        width: 'calc(100vw - 72px)',
+        width: window.innerWidth < 600 ? 'calc(100% - 72px)' : '65vh',
         padding: '12px 0px 0px 0px',
         color: 'white'
     }
