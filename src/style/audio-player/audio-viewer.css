@@ -112,16 +112,20 @@
     /* padding-right: 16px; */
 }
 
-.audio-viewer .main .actions .shuffle-button, .like-button {
-    color: #212121;
+.audio-viewer .main .actions .shuffle-button {
+    color: #353535;
+    font-size: 20px;
+}
+
+.audio-viewer .main .actions .like-button {
+    color: #353535;
     font-size: 20px;
 }
 
 .audio-viewer .main .lyrics {
     text-align: center;
     font-size: 14px;
-    font-weight: 500;
-    color: #212121;
+    color: #353535;
 }
 
 .audio-viewer .main .lyrics .lyrics-icon {

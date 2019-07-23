@@ -186,7 +186,8 @@ class AudioController extends Component {
                 duration={isNaN(this.state.audioLength) ? 100 : Math.round(this.state.audioLength)}
                 updateCurrentTime={this.updateCurrentTime}
                 play={this.play}
-                pause={this.pause} />
+                pause={this.pause}
+                shuffle={this.props.shuffleSong} />
             <audio
                 src={song_data.audio_url} ref={this.audio}
             ></audio>

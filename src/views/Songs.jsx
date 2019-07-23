@@ -150,6 +150,12 @@ class AudioPlayer extends Component {
         this.setState({ playing_song_id: songId, playing_song: song });
     }
 
+    shuffleSong = () => {
+        const { all_songs } = this.state;
+        const random = Math.floor(Math.random() * (all_songs.length + 1));
+        this.setState({ playing_song_id: all_songs[random].id, playing_song: all_songs[random].data })
+    }
+
     likeSong = (songId) => {
         const firebaseApp = this.context;
         const db = firebaseApp.firestore();
@@ -263,6 +269,7 @@ class AudioPlayer extends Component {
                     song_data={playing_song}
                     likeSong={this.likeSong}
                     unlikeSong={this.unlikeSong}
+                    shuffleSong={this.shuffleSong}
                 />
             }
             <Leaderboard

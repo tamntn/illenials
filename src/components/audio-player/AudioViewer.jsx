@@ -157,7 +157,7 @@ class AudioViewer extends Component {
                 </div>
                 <div className="actions">
                     <FontAwesomeIcon icon={faRandom} className="shuffle-button" />
-                    <FontAwesomeIcon icon={faBackward} className="backward-button" />
+                    <FontAwesomeIcon icon={faBackward} className="backward-button" onClick={() => this.props.updateCurrentTime(0)} />
                     {
                         isPlaying
                             ?
@@ -165,14 +165,14 @@ class AudioViewer extends Component {
                             :
                             <FontAwesomeIcon icon={faPlay} className="play-button" onClick={play} />
                     }
-                    <FontAwesomeIcon icon={faForward} className="forward-button" />
+                    <FontAwesomeIcon icon={faForward} className="forward-button" onClick={this.props.shuffle} />
                     <FontAwesomeIcon icon={faHeart} className="like-button" />
                 </div>
                 <div
                     className="lyrics"
                     ref={this.lyrics}
-                    // style={{ height: `${window.innerHeight}px` }}
-                    // onClick={this.scrollToLyrics}
+                // style={{ height: `${window.innerHeight}px` }}
+                // onClick={this.scrollToLyrics}
                 >
                     <FontAwesomeIcon icon={faArrowDown} className="lyrics-icon" /> View lyrics available soon
                 </div>
