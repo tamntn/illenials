@@ -1,4 +1,6 @@
-.songs-wrapper {}
+.songs-wrapper {
+    padding-bottom: 56px;
+}
 
 .songs-loader {
     height: 80vh;
@@ -65,13 +67,13 @@
 
 @media screen and (max-width: 1279px) {
     .songs-wrapper {
-        padding: 0px 48px
+        padding: 0px 48px 56px 48px;
     }
 }
 
 @media screen and (max-width: 959px) {
     .songs-wrapper {
-        padding: 0px 24px;
+        padding: 0px 24px 56px 24px;
     }
 }
 

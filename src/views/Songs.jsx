@@ -152,7 +152,7 @@ class AudioPlayer extends Component {
 
     shuffleSong = () => {
         const { all_songs } = this.state;
-        const random = Math.floor(Math.random() * (all_songs.length + 1));
+        const random = Math.floor(Math.random() * all_songs.length);
         this.setState({ playing_song_id: all_songs[random].id, playing_song: all_songs[random].data })
     }
 
