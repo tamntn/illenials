@@ -88,7 +88,7 @@
 }
 
 .audio-viewer .main .actions {
-    padding: 32px 36px;
+    padding: 28px 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -97,7 +97,7 @@
 
 .audio-viewer .main .actions .play-button {
     color: white;
-    font-size: 43px;
+    font-size: 45px;
 }
 
 .audio-viewer .main .actions .backward-button {

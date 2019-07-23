@@ -8,9 +8,10 @@ import { ThemeProvider } from '@material-ui/styles';
 import { Snackbar, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Home from './views/Home';
-import SignIn from './views/SignIn.jsx';
+import Credits from './views/Credits';
+import Profile from './views/Profile';
+import SignIn from './views/SignIn';
 import Songs from './views/Songs';
-import Credits from './views/Credits.jsx';
 import NotFound404 from './views/NotFound404';
 
 ReactGA.initialize('UA-143098154-1');
@@ -100,7 +101,8 @@ class App extends React.Component {
 							<Route exact path="/" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
 							<Route path="/home" render={(props) => <Home {...props} isSignedIn={isSignedIn} />} />
 							<Route path="/signin" render={(props) => <SignIn {...props} isSignedIn={isSignedIn} openMessage={this.handleOpenMessage} />} />
-							<Route path="/credits" render={(props) => <Credits {...props} />} />
+							<Route path="/profile" render={(props) => <Profile {...props} isSignedIn={isSignedIn} openMessage={this.handleOpenMessage} />} />
+							<Route path="/credits" component={Credits} />
 							<Route path="/songs" render={(props) => <Songs {...props} isSignedIn={isSignedIn} openMessage={this.handleOpenMessage} />} />
 							<Route component={NotFound404} />
 						</Switch>
@@ -113,7 +115,7 @@ class App extends React.Component {
 						horizontal: 'center',
 					}}
 					open={viewMessage}
-					autoHideDuration={5000}
+					autoHideDuration={8000}
 					onClose={this.handleCloseMessage}
 				>
 					<AppMessage

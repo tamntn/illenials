@@ -102,20 +102,23 @@
     color: #757575;
     font-size: 21px;
     margin-left: 8px;
+    transition: all 0.25s;
 }
 
 .song-item-full .song-item-full-right .bottom .heart:hover {
-    cursor: pointer;
     color: #f44336;
+    cursor: pointer;
 }
 
 .song-item-full .song-item-full-right .bottom .heart-solid {
     color: #f44336;
     font-size: 21px;
     margin-left: 8px;
+    transition: all 0.25s;
 }
 
 .song-item-full .song-item-full-right .bottom .heart-soid:hover {
+    filter: opacity(70%);
     cursor: pointer;
 }
 

@@ -9,7 +9,7 @@ class StickyYearDivider extends Component {
     }
 
     render() {
-        const { year, number_of_releases } = this.props;
+        const { year } = this.props;
 
         return <Sticky enabled={true} bottomBoundary={`#year_${year}`}>
             <div className={`sticky-year-divider`}>

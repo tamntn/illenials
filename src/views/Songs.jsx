@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { FirebaseContext } from '../firebase';
-import { Grid, TextField, InputAdornment, Snackbar, SnackbarContent, Slide } from '@material-ui/core';
+import { Grid, TextField, InputAdornment, Snackbar, SnackbarContent } from '@material-ui/core';
 import { SearchOutlined, Close as CloseIcon } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -157,7 +157,7 @@ class AudioPlayer extends Component {
         if (currentUser) {
             const { uid } = currentUser;
             let songsRef = db.collection('songs');
-            let songRef = songsRef.doc(songId).update({
+            songsRef.doc(songId).update({
                 "likes": firebase.firestore.FieldValue.arrayUnion(uid)
             })
         }
@@ -170,7 +170,7 @@ class AudioPlayer extends Component {
         if (currentUser) {
             const { uid } = currentUser;
             let songsRef = db.collection('songs');
-            let songRef = songsRef.doc(songId).update({
+            songsRef.doc(songId).update({
                 "likes": firebase.firestore.FieldValue.arrayRemove(uid)
             })
         }
@@ -189,7 +189,7 @@ class AudioPlayer extends Component {
 
         if (this.state.all_songs_by_year.length === 0) {
             return <div className="songs-loader">
-                <img src={phoenixGif} />
+                <img src={phoenixGif} alt="phoenix-loader" />
                 <div>ascending...</div>
             </div>
         }
@@ -274,7 +274,7 @@ class AudioPlayer extends Component {
                     horizontal: 'center',
                 }}
                 open={viewMessage}
-                autoHideDuration={10000}
+                autoHideDuration={20000}
                 onClose={this.handleCloseMessage}
             >
                 <AppMessage
