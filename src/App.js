@@ -120,7 +120,7 @@ class App extends React.Component {
 				>
 					<AppMessage
 						message={message}
-						action={[<CloseMessageIcon />]}
+						action={[<CloseMessageIcon onClick={this.handleCloseMessage} />]}
 					/>
 				</Snackbar>
 			</ThemeProvider>
