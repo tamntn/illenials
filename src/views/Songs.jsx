@@ -13,7 +13,7 @@ import phoenixGif from '../images/phoenix.gif';
 import SongListFull from '../components/song-list/SongListFull';
 import SongListSquare from '../components/song-list/SongListSquare';
 import AudioController from '../components/audio-player/AudioController';
-import Leaderboard from '../components/song-vote/Leaderboard';
+import Leaderboard from '../components/Leaderboard';
 import '../style/views/songs.css';
 
 const AppMessage = withStyles({
@@ -42,7 +42,7 @@ class AudioPlayer extends Component {
         this.state = {
             viewMessage: true,
             search_text: "",
-            all_songs: "",
+            all_songs: [],
             all_songs_by_year: [],
             playing_song: undefined,
             playing_song_id: undefined,
@@ -267,7 +267,8 @@ class AudioPlayer extends Component {
             }
             <Leaderboard
                 open={this.state.openLeaderboard}
-                closeLeaderboard={this.closeLeaderboard} />
+                closeLeaderboard={this.closeLeaderboard}
+                songs={this.state.all_songs} />
             <Snackbar
                 anchorOrigin={{
                     vertical: 'top',

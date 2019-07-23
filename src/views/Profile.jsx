@@ -99,7 +99,6 @@ class Profile extends Component {
                             margin="normal"
                             variant="outlined"
                             fullWidth
-                            autoFocus
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><Person /></InputAdornment>,
                                 style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 }
