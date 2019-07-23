@@ -22,6 +22,14 @@ class Leaderboard extends Component {
         this.state = {}
     }
 
+    sortSongsByLikes = (songs) => {
+        return songs.sort((a, b) => {
+            const a_likes = a.data.likes.length;
+            const b_likes = b.data.likes.length;
+            return b_likes - a_likes;
+        })
+    }
+
     onClose = () => {
         this.props.closeLeaderboard();
     }
@@ -61,7 +69,7 @@ class Leaderboard extends Component {
                                 <div className="likes">LIKES</div>
                             </div>
                             {
-                                this.props.songs.map((song, i) => {
+                                this.sortSongsByLikes(this.props.songs).map((song, i) => {
                                     return <div className={`row ${i < 16 ? 'top' : ''}`} key={i}>
                                         <div className="rank">{i + 1}</div>
                                         <div className="name">{song.data.name}<span>&nbsp;&bull;&nbsp;{this.getAlbumText(song.data)}</span></div>
