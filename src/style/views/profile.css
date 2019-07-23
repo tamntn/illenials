@@ -31,3 +31,10 @@
     margin-top: 24px;
     text-align: center;
 }
+
+@media screen and (max-width: 599px) {
+    .profile .title {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+}

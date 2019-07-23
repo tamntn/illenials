@@ -31,8 +31,16 @@ class Profile extends Component {
         }
     }
 
+    componentDidMount() {
+        this.fetchUserInfo();
+    }
+
     componentDidUpdate() {
-        if (this.state.currentUser === undefined) {
+        this.fetchUserInfo();
+    }
+
+    fetchUserInfo = () => {
+        if (this.props.isSignedIn === true && this.state.currentUser === undefined) {
             const firebaseApp = this.context;
             const { currentUser } = firebaseApp.auth();
             this.setState({
@@ -73,8 +81,6 @@ class Profile extends Component {
             return <Redirect to="/signin" />
         }
 
-        console.log(this.context.auth().currentUser);
-
         return <div className="profile">
             <div className="title">ILLENIAL PROFILE</div>
             <div className="image">
@@ -88,7 +94,6 @@ class Profile extends Component {
                             id="profile-name"
                             label="Full Name"
                             InputLabelProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '17px' } }}
-                            inputProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 } }}
                             value={name}
                             onChange={(event) => this.setState({ name: event.target.value })}
                             margin="normal"
@@ -97,13 +102,13 @@ class Profile extends Component {
                             autoFocus
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><Person /></InputAdornment>,
+                                style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 }
                             }}
                         />
                         <ProfileTextField
                             id="profile-email"
                             label="Email"
                             InputLabelProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '17px' } }}
-                            inputProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 } }}
                             value={email}
                             onChange={(event) => this.setState({ email: event.target.value })}
                             margin="normal"
@@ -111,13 +116,13 @@ class Profile extends Component {
                             fullWidth
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><EmailOutlined /></InputAdornment>,
+                                style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 }
                             }}
                         />
                         <ProfileTextField
                             id="profile-phone"
                             label="Phone Number"
                             InputLabelProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '17px' } }}
-                            inputProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 } }}
                             value={phone}
                             onChange={(event) => this.setState({ phone: event.target.value })}
                             margin="normal"
@@ -126,13 +131,13 @@ class Profile extends Component {
                             disabled
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><PhoneIphoneOutlined /></InputAdornment>,
+                                style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 }
                             }}
                         />
                         <ProfileTextField
                             id="profile-image-url"
                             label="Profile Image URL"
                             InputLabelProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '17px' } }}
-                            inputProps={{ style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 } }}
                             value={imageUrl}
                             onChange={(event) => this.setState({ imageUrl: event.target.value })}
                             margin="normal"
@@ -140,6 +145,7 @@ class Profile extends Component {
                             fullWidth
                             InputProps={{
                                 startAdornment: <InputAdornment position="start"><PhotoCameraOutlined /></InputAdornment>,
+                                style: { fontFamily: "'Rajdhani', sans-serif", fontSize: '19px', fontWeight: 500 }
                             }}
                         />
                     </div>

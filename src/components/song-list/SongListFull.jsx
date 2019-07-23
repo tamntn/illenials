@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StickyYearDivider from './StickyYearDivider';
 import SongItemFull from '../song-item/SongItemFull';
-import { viewOptions } from '../../utils/view-options.js';
 
 class SongListFull extends Component {
     constructor(props) {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
 import StickyYearDivider from './StickyYearDivider';
 import SongItemSquare from '../song-item/SongItemSquare';
-import { viewOptions } from '../../utils/view-options.js';
 
 class SongListSquare extends Component {
     constructor(props) {
