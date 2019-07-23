@@ -63,7 +63,7 @@ class Profile extends Component {
                 photoURL: this.state.imageUrl,
                 phoneNumber: this.state.phone
             }),
-            currentUser.updateEmail(this.state.email)
+            (this.state.email !== "" ? currentUser.updateEmail(this.state.email) : "")
         ])
             .then(() => this.props.openMessage("Successfully updated your profile 👌🏻"))
             .catch((err) => this.props.openMessage(err.message))
