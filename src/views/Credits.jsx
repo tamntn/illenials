@@ -50,6 +50,10 @@ class Credits extends Component {
                     <div><a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">Facebook React</a>, <a href="https://firebase.google.com/docs/auth" target="_blank" rel="noopener noreferrer">Google Firebase Authentication</a>, <a href="https://firebase.google.com/docs/firestore" target="_blank" rel="noopener noreferrer">Cloud Firestore</a>, <a href="https://developer.spotify.com/documentation/web-api/" target="_blank" rel="noopener noreferrer">Spotify API</a>, <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener noreferrer">Amazon S3</a>, etc.</div>
                 </CreditBox>
                 <CreditBox className="credits-box">
+                    <div className="credits-box-name">DESIGNER</div>
+                    <div>The countdown page was designed by <a href="https://www.facebook.com/Saywhu" target="_blank" rel="noopener noreferrer">Bach Nguyen</a></div>
+                </CreditBox>
+                <CreditBox className="credits-box">
                     <div className="credits-box-name">DEVELOPER</div>
                     <div>TAM</div>
                 </CreditBox>

@@ -12,6 +12,21 @@
     user-select: none;
 }
 
+.sign-in .warnings {
+    margin: 24px 24px 0px 24px;
+    color: #f6e3b2;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+.sign-in .warnings div {
+    max-width: 552px;
+}
+
 .sign-in .description {
     margin: 24px 24px 0px 24px;
     color: #757575;
@@ -41,7 +56,8 @@
         margin-bottom: 24px;
         font-size: 28px;
     }
-    .sign-in .description {
-        margin: 8px 24px 0px 24px;
+    .sign-in .warnings {
+        margin: 0px 24px 0px 24px;
+        font-size: 14px;
     }
 }

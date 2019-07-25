@@ -84,9 +84,20 @@ class AudioController extends Component {
     }
 
     switchSong = () => {
+        this.audio.current.removeEventListener('play', this.setPlayingStateToTrue);
+        this.audio.current.removeEventListener('pause', this.setPlayingStateToFalse);
+        this.audio.current.removeEventListener('ended', this.shuffle);
         this.setState({ audioCurrentTime: 0 })
         this.audio.current.src = this.props.song_data.audio_url;
         this.play();
+    }
+
+    setPlayingStateToTrue = () => {
+        this.setState({ isPlaying: true });
+    }
+
+    setPlayingStateToFalse = () => {
+        this.setState({ isPlaying: false });
     }
 
     play = (event) => {
@@ -101,15 +112,19 @@ class AudioController extends Component {
             this.normaliseProgress();
         });
 
-        this.audio.current.addEventListener('play', () => this.setState({ isPlaying: true }))
-        this.audio.current.addEventListener('pause', () => this.setState({ isPlaying: false }))
-        this.audio.current.addEventListener('ended', () => this.setState({ isPlaying: false }))
+        this.audio.current.addEventListener('play', this.setPlayingStateToTrue)
+        this.audio.current.addEventListener('pause', this.setPlayingStateToFalse)
+        this.audio.current.addEventListener('ended', this.shuffle)
     }
 
     pause = (event) => {
         event.stopPropagation();
         this.setState({ isPlaying: false });
         this.audio.current.pause();
+    }
+
+    shuffle = () => {
+        this.props.shuffleSong();
     }
 
     updateCurrentTime = (value) => {

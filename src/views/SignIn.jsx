@@ -52,6 +52,9 @@ class SignIn extends Component {
                     <StyledFirebaseAuth
                         uiConfig={this.firebaseUiConfig}
                         firebaseAuth={firebaseApp.auth()} />
+                    <div className="warnings">
+                        <div>If you have trouble signing in with Facebook or Google, try opening the website in Chrome or Safari. Embedded browsers from mobile apps might block the signin popup.</div>
+                    </div>
                     <div className="description">
                         <div>¹ Account signin is required in order to keep track of everyone's voting and make sure that each vote is unique.</div>
                         <div>² Your data is completely secured as authentication is done via Google Firebase. This website has no access to any of your data besides phone number (if you sign up with phone), and any other data you have already made publicly available on your Facebook/Google account.</div>

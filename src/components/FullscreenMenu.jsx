@@ -96,7 +96,7 @@ class FullscreenMenu extends Component {
                             <MenuItem key={6} onClick={this.signOut}>Sign Out</MenuItem>
                         }
                     </PoseGroup>
-                    <div className="menu-footer">made by 👨🏻‍💻 with ☕️ & 🧡</div>
+                    <div className="menu-footer">made by <a href="https://www.instagram.com/tam.ntn/" target="_blank">👨🏻‍💻</a> with ☕️ & 🧡</div>
                 </FullscreenMenuRight>
             </FullscreenMenuWrapper>
         )
