@@ -18,6 +18,19 @@ const AlbumArtwork = posed.div({
     }
 })
 
+const CountdownText = posed.div({
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 1000, delay: 1000, ease: 'easeIn' },
+    },
+    hidden: {
+        y: 15,
+        opacity: 0,
+        transition: { duration: 1000 }
+    }
+})
+
 const CountdownBox = posed.div({
     visible: {
         y: 0,
@@ -59,10 +72,13 @@ class CountdownPage extends Component {
             const then = moment('2019-08-16');
             const now = moment();
             const countdown = moment.duration(then.diff(now));
-            const days = Math.floor(countdown.asDays());
-            const hours = this.addPrecedingZero(countdown.hours());
-            const minutes = this.addPrecedingZero(countdown.minutes());
-            const seconds = this.addPrecedingZero(countdown.seconds());
+            const days = Math.floor(countdown.asDays()) * -1;
+            // const hours = this.addPrecedingZero(countdown.hours());
+            // const minutes = this.addPrecedingZero(countdown.minutes());
+            // const seconds = this.addPrecedingZero(countdown.seconds());
+            const hours = countdown.hours() * -1;
+            const minutes = countdown.minutes() * -1;
+            const seconds = countdown.seconds() * -1;
 
             this.setState({ days, hours, minutes, seconds });
         }, 1000);
@@ -99,6 +115,7 @@ class CountdownPage extends Component {
                     <img src={albumArtwork} alt="album-artwork" />
                 </AlbumArtwork>
                 <div className="countdown-page-right">
+                    <CountdownText className="countdown-out" initialPose="hidden" pose="visible">ASCEND OUT NOW!</CountdownText>
                     <CountdownBox className="countdown-box" initialPose="hidden" pose="visible">
                         <div className="countdown-unit">
                             <div className="countdown-number">{days}</div>

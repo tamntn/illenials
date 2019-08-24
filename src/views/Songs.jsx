@@ -40,6 +40,7 @@ class AudioPlayer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             viewMessage: true,
             search_text: "",
             all_songs: [],
@@ -53,6 +54,9 @@ class AudioPlayer extends Component {
 
     componentDidMount() {
         this.fetchSongs();
+        setTimeout(() => this.setState({
+            loading: false
+        }), 1500);
     }
 
     componentWillUnmount() {
@@ -70,12 +74,16 @@ class AudioPlayer extends Component {
                 id: doc.id,
                 data: doc.data()
             }));
-            setTimeout(() => {
+            this.setState({
+                all_songs: songs,
+                all_songs_by_year: this.generateSongsByYearList(songs)
+            })
+            if (this.state.playing_song === undefined) {
                 this.setState({
-                    all_songs: songs,
-                    all_songs_by_year: this.generateSongsByYearList(songs)
+                    playing_song: songs[0].data,
+                    playing_song_id: songs[0].id
                 })
-            }, 750)
+            }
         })
     }
 
@@ -193,7 +201,7 @@ class AudioPlayer extends Component {
             return <Redirect to="/signin" />
         }
 
-        if (this.state.all_songs_by_year.length === 0) {
+        if (this.state.loading && this.state.all_songs_by_year.length === 0) {
             return <div className="songs-loader">
                 <img src={phoenixGif} alt="phoenix-loader" />
                 <div>ascending...</div>

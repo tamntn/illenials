@@ -41,7 +41,7 @@ class AudioController extends Component {
         super(props);
         this.state = {
             openViewer: false,
-            isPlaying: true,
+            isPlaying: false,
             audioLength: undefined,
             audioCurrentTime: undefined,
             liked: undefined
@@ -51,15 +51,15 @@ class AudioController extends Component {
     }
 
     componentDidMount() {
-        const firebaseApp = this.context;
-        const uid = firebaseApp.auth().currentUser.uid;
-        const liked = this.props.song_data.likes.includes(uid);
-        this.play();
-        this.setState({ liked })
+        // const firebaseApp = this.context;
+        // const uid = firebaseApp.auth().currentUser.uid;
+        // const liked = this.props.song_data.likes.includes(uid);
+        // this.play();
+        // this.setState({ liked })
     }
 
     componentDidUpdate(prevProps) {
-        const newSongData = prevProps.song_data !== this.props.song_data;
+        const newSongData = prevProps.song_data.audio_url !== this.props.song_data.audio_url;
         if (newSongData) this.switchSong();
     }
 
